@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+const wa = (text: string) => `https://wa.me/6285707109853?text=${encodeURIComponent(text)}`;
+const WA_JOIN = wa("Halo STRIV, saya mau join Community. Bagaimana caranya?");
+---
+<Layout active="about" title="Tentang STRIV — Lahir di Surabaya." description="Cerita lahirnya STRIV: keresahan terhadap industri fitness yang monoton dan penuh ego, dan jawaban kami dari Surabaya.">
+
+<section class="hero"><div class="wrap">
+  <img class="hero-mark" src="/symbol_logo.svg" alt="STRIV" width="64" height="64" fetchpriority="high" />
+  <span class="eyebrow">[TENTANG KAMI]</span>
+  <h1>Lahir dari <em>Keresahan.</em></h1>
+  <p>STRIV bukan dibangun dari modal besar — tapi dari frustrasi melihat industri fitness yang begitu-begitu saja.</p>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="trans">
+    <img src="/text_logo.svg" alt="STRIV" width="180" height="45" loading="lazy" style="margin-bottom:1.25rem;display:block" />
+    <span class="eyebrow">[THE ORIGIN STORY // SURABAYA]</span>
+    <h2 class="sec-title" style="font-size:1.6rem">Industri yang Monoton dan Penuh Ego.</h2>
+    <blockquote>"Gym dipenuhi cermin dan ego lifting. Program dijual mahal tapi generik. Pemula dibiarkan bingung — atau malah dijadikan target jualan suplemen. Kami muak melihatnya."</blockquote>
+    <p style="color:var(--muted);font-size:.9rem">STRIV lahir di Surabaya dari keresahan sederhana: kenapa latihan beban — aktivitas paling terbukti menyehatkan — justru terasa mengintimidasi? Kenapa member baru dibiarkan latihan acak, lalu berhenti dalam 6 bulan dan menyalahkan diri sendiri? Kami memulai dengan mendampingi segelintir orang secara personal: koreksi teknik satu per satu, catat setiap beban, rayakan setiap PR. Komunitas tumbuh dari mulut ke mulut — dan filosofi S-T-R-I-V (Strength, Technique, Resistance, Intensity, Vitality) menjadi kompasnya.</p>
+    <div class="two">
+      <div class="do ok"><b><Icon name="check" size={13} /> YANG KAMI PERCAYA</b><ul><li>• Setiap orang berhak kuat — bukan cuma yang "berbakat".</li><li>• Teknik yang benar mengalahkan beban berat yang salah.</li><li>• Komunitas membuat orang bertahan lebih lama.</li></ul></div>
+      <div class="do no"><b><Icon name="x" size={13} /> YANG KAMI TOLAK</b><ul><li>• TIDAK ada ego lifting di sekitar kami.</li><li>• TIDAK ada janji instan dan suplemen wajib.</li><li>• TIDAK ada member yang dibiarkan jalan sendiri.</li></ul></div>
+    </div>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="row"><span class="n">01</span><span>[AWAL]</span></div><h4><Icon name="users" size={18} /> Pendampingan Personal</h4><p>Berawal dari sesi 1-on-1 di gym-gym Surabaya: koreksi form, catat beban, bangun kepercayaan diri pemula.</p><div class="out"><Icon name="arrow-right" size={13} /> Fondasi metode coaching</div></div>
+    <div class="step"><div class="row"><span class="n">02</span><span>[KOMUNITAS]</span></div><h4><Icon name="message-circle" size={18} /> Grup Edu-Social</h4><p>Klien-klien awal saling terhubung. Grup WhatsApp lahir: tempat bertanya, setor video form, dan rayakan PR bareng.</p><div class="out"><Icon name="arrow-right" size={13} /> <a class="src" href="/community">Join gratis →</a></div></div>
+    <div class="step"><div class="row"><span class="n">03</span><span>[SEKARANG]</span></div><h4><Icon name="sparkles" size={18} /> STRIV Lab &amp; Event</h4><p>Edukasi terstruktur lewat STRIV Lab dan event offline seperti Squat &amp; Coffee — sains fitness dibuka gratis untuk semua.</p><div class="out"><Icon name="arrow-right" size={13} /> <a class="src" href="/lab">Jelajahi Lab →</a></div></div>
+  </div>
+  <div class="final-box" style="margin-top:2.5rem">
+    <img src="/symbol_logo.svg" alt="STRIV" width="44" height="44" loading="lazy" style="margin:0 auto 1rem;display:block" />
+    <span class="eyebrow">[JADILAH BAGIAN CERITA]</span>
+    <h2 class="sec-title">Tulis Bab Progresmu.</h2>
+    <p>Bab berikutnya STRIV ditulis oleh membernya. Mulai gratis dari komunitas.</p>
+    <div class="cta-row" style="margin-bottom:0">
+      <a class="btn btn-lime" href={WA_JOIN} target="_blank" rel="noopener"><Icon name="message-circle" size={16} /> Join the Community</a>
+      <a class="btn btn-ghost" href="/coaching">Lihat Coaching</a>
+    </div>
+  </div>
+</div></section>
+
+</Layout>

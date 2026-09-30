@@ -1,0 +1,140 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+const wa = (text: string) => `https://wa.me/6285707109853?text=${encodeURIComponent(text)}`;
+const WA_HYBRID = wa("Halo STRIV, saya tertarik dengan program Hybrid Starter. Bisa info lebih lanjut?");
+const WA_GENERAL = wa("Halo STRIV, saya siap memulai program coaching. Bisa bantu analisis target saya?");
+const WA_OFFLINE = wa("Halo STRIV, saya tertarik dengan program Offline Coaching. Bisa info ketersediaan sesi dan lokasi gym?");
+const WA_ONLINE = wa("Halo STRIV, saya tertarik mendaftar Online Coaching. Bisa konsultasi dulu?");
+const WA_HALF = wa("Halo STRIV, saya tertarik dengan program Half Starter (Rp250rb/bln). Bisa info lebih lanjut?");
+const WA_INSIDENTIL = wa("Halo STRIV, saya mau booking 1 sesi Offline Insidentil (Rp75rb). Kapan jadwal tersedia?");
+const WA_SINGLE = wa("Halo STRIV, saya mau ambil 1 sesi Online Tunggal (Rp50rb). Bisa info caranya?");
+const FORM_URL = "#pricing"; // ponytail: ganti dengan URL Google Form Client Intake saat sudah ada
+---
+<Layout active="coaching" title="STRIV Coaching — Offline, Online & Hybrid." description="Upgrade dari anggota komunitas jadi klien: Offline Coaching, Hybrid Starter, Online Coaching. Transparan, tanpa suplemen wajib.">
+
+<section class="hero"><div class="wrap">
+  <img class="hero-mark" src="/symbol_logo.svg" alt="STRIV" width="64" height="64" fetchpriority="high" />
+  <span class="eyebrow">[COACHING &amp; SERVICES] | 1-ON-1 &amp; HYBRID</span>
+  <h1>Train Better.<br /><em>Progress Together.</em></h1>
+  <p>Berhenti berlatih secara acak. Pendampingan 1-on-1 terarah, aman, dan konsisten — offline, online, atau hybrid.</p>
+  <div class="cta-row">
+    <a class="btn btn-lime" href="#pricing">Mulai Program Kamu <Icon name="arrow-right" size={16} /></a>
+    <a class="btn btn-ghost" href="#metode"><Icon name="clipboard-check" size={16} /> Pelajari Metode Kami</a>
+  </div>
+</div></section>
+
+<!-- METHOD -->
+<section id="metode" style="padding-top:0"><div class="wrap">
+  <div class="center"><span class="eyebrow">[ARCHITECTURE FRAMEWORK]</span>
+    <h2 class="sec-title">A Better Way to Train.</h2>
+    <p class="sec-sub">Latihan yang baik bukan sekadar bekerja keras. Tapi tentang struktur, konsistensi, dan evaluasi.</p>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="row"><span class="n">01</span><span>[ASSESS]</span></div><h4><Icon name="users" size={18} /> Assess</h4><p>Memahami titik awal, tujuan, dan batasanmu: mobilitas, riwayat cedera, waktu mingguan.</p><div class="out"><Icon name="arrow-right" size={13} /> Output: Baseline Report</div></div>
+    <div class="step"><div class="row"><span class="n">02</span><span>[PLAN]</span></div><h4><Icon name="calendar-check" size={18} /> Plan</h4><p>Menyusun struktur latihan personal: split realistis sesuai profil biomekanikmu.</p><div class="out"><Icon name="arrow-right" size={13} /> Output: Custom Program Sheet</div></div>
+    <div class="step"><div class="row"><span class="n">03</span><span>[TRAIN]</span></div><h4><Icon name="dumbbell" size={18} /> Train</h4><p>Eksekusi latihan dengan teknik yang tepat: bracing, tempo 3-1-1, jalur bar ideal.</p><div class="out"><Icon name="arrow-right" size={13} /> Output: 1-on-1 + Video Breakdown</div></div>
+    <div class="step"><div class="row"><span class="n">04</span><span>[TRACK]</span></div><h4><Icon name="chart-line" size={18} /> Track</h4><p>Mencatat repetisi, beban, dan tingkat kesulitan (RPE) setiap set via smartphone.</p><div class="out"><Icon name="arrow-right" size={13} /> Output: Tonnage &amp; PR Tracking</div></div>
+    <div class="step"><div class="row"><span class="n">05</span><span>[ADAPT]</span></div><h4><Icon name="trending-up" size={18} /> Adapt</h4><p>Menyesuaikan program berdasarkan data mingguan: deload &amp; scaling tanpa asumsi.</p><div class="out"><Icon name="arrow-right" size={13} /> Output: Weekly Adjustment</div></div>
+    <div class="step"><div class="row"><span class="n">06</span><span>[PROGRESS]</span></div><h4><Icon name="sparkles" size={18} /> Progress</h4><p>Membangun hasil nyata secara bertahap: mandiri di gym mana pun, seumur hidup.</p><div class="out"><Icon name="arrow-right" size={13} /> Output: Autonomous Mastery</div></div>
+  </div>
+  <div class="chart">
+    <span class="eyebrow">[ENGINEERED PROGRESSION MODEL]</span>
+    <h3 style="font-size:1.3rem">Simulasi Volume Load: STRIV vs Latihan Acak</h3>
+    <svg viewBox="0 0 1000 240" fill="none" role="img" aria-label="Grafik progres volume latihan naik vs plateau">
+      <path d="M0,190 Q200,180 400,185 T700,190 T1000,185" stroke="#4b5563" stroke-dasharray="6,6" stroke-width="2"/>
+      <path class="draw-line" pathLength="1" d="M0,200 L150,170 L300,150 L450,115 L600,85 L750,120 L900,50 L1000,30" stroke="#b7f000" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M0,200 L150,170 L300,150 L450,115 L600,85 L750,120 L900,50 L1000,30 L1000,240 L0,240 Z" fill="#b7f000" opacity=".12"/>
+    </svg>
+    <div class="legend"><span>━ STRIV (naik)</span><span>- - Latihan acak (plateau)</span><span class="pill">+24.8% NET ADAPTATION</span></div>
+  </div>
+</div></section>
+
+<!-- PRICING -->
+<section id="pricing"><div class="wrap">
+  <div class="center"><span class="eyebrow">[TIER ARCHITECTURE] Tanpa biaya tersembunyi</span>
+    <h2 class="sec-title">Pilih Cara Berlatihmu.</h2>
+    <p class="sec-sub">Transparan, tanpa paksaan suplemen. Kamu hanya membayar pendampingan dan keahlian coach.</p>
+  </div>
+  <div class="price-grid">
+    <div class="price"><span class="tag" style="color:var(--muted);border-color:var(--line)">[EXCLUSIVE IN-PERSON]</span>
+      <h3>Offline Coaching</h3><p class="desc">Sesi tatap muka untuk fondasi teknik. Ideal untuk pemula yang ingin diawasi setiap repetisi.</p>
+      <div class="pricebox"><small>STRUKTUR PAKET</small><div class="big">Paket 8 / 12 Sesi</div><small><Icon name="map-pin" size={12} /> Masa aktif fleksibel • Surabaya, Sidoarjo &amp; Gresik</small></div>
+      <ul class="feat"><li><Icon name="check" size={15} /><span><b>1-on-1 Full Attention</b> 60–75 menit per sesi.</span></li><li><Icon name="check" size={15} /><span><b>Realtime Cueing</b> koreksi pinggang, lutut, bahu.</span></li><li><Icon name="check" size={15} /><span><b>Workout Log Sheet</b> personal rapi.</span></li><li><Icon name="check" size={15} /><span><b>Konsultasi WA</b> nutrisi &amp; recovery.</span></li></ul>
+      <a class="btn btn-ghost" href={WA_OFFLINE} target="_blank" rel="noopener">Tanya Ketersediaan Sesi</a></div>
+    <div class="price hero-price"><span class="ribbon">[MOST EFFICIENT // BEST VALUE]</span>
+      <span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35);margin-top:.5rem">[FOUNDING COHORT // OPEN]</span>
+      <h3>Hybrid Starter</h3><p class="desc">Kombinasi sempurna pendampingan langsung dan kemandirian. Formula paling efektif.</p>
+      <div class="pricebox"><span class="strike">Rp550.000</span><div class="big">Rp500.000 <small style="color:var(--muted)">/ bulan</small></div><small>Hanya ~<b style="color:#fff">Rp41.000 per hari latihan</b> • Founding Price</small></div>
+      <ul class="feat"><li><Icon name="check" size={15} /><span><b>4x Sesi Offline</b> langsung bersama Coach.</span></li><li><Icon name="check" size={15} /><span><b>4x Online Check-ins</b> video breakdown via WA.</span></li><li><Icon name="check" size={15} /><span><b>Personalized Program</b> + Workout Tracker.</span></li><li><Icon name="check" size={15} /><span><b>Weekly Review &amp; RPE Audit</b> tiap pekan.</span></li><li><Icon name="check" size={15} /><span><b>Prioritas Respons WA 7 hari.</b></span></li></ul>
+      <a class="btn btn-lime" href={WA_HYBRID} target="_blank" rel="noopener">Ambil Paket Hybrid <Icon name="arrow-right" size={16} /></a></div>
+    <div class="price"><span class="tag" style="color:var(--muted);border-color:var(--line)">[REMOTE WORLDWIDE]</span>
+      <h3>Online Coaching</h3><p class="desc">Sistem remote coaching untuk kamu yang sudah paham teknik dasar.</p>
+      <div class="pricebox"><small>BIAYA BERLANGGANAN</small><div class="big">Monthly Retainer</div><small>Full async feedback • Tanpa batas jarak</small></div>
+      <ul class="feat"><li><Icon name="check" size={15} /><span><b>Weekly Async Video Analysis</b> via WA.</span></li><li><Icon name="check" size={15} /><span><b>Full Training OS Spreadsheet</b> periodisasi bulanan.</span></li><li><Icon name="check" size={15} /><span><b>Weekly Check-in</b> evaluasi &amp; target PR.</span></li><li><Icon name="check" size={15} /><span><b>Direct WhatsApp Guidance</b> harian.</span></li></ul>
+      <a class="btn btn-ghost" href={WA_ONLINE} target="_blank" rel="noopener">Pilih Online Coaching</a></div>
+  </div>
+  <div class="mini-head"><span class="eyebrow">[SESI FLEKSIBEL // SATUAN]</span>
+    <h3>Mulai Kecil, Coba Dulu.</h3>
+    <p>Tidak siap komitmen bulanan? Ambil versi setengah atau sesi tunggal.</p>
+  </div>
+  <div class="mini-grid">
+    <div class="mini"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[HYBRID SETENGAH]</span>
+      <h4>Half Starter</h4><div class="per">Rp250.000 <small>/ bulan</small></div>
+      <p>Setengah porsi Hybrid Starter: separuh sesi, separuh harga.</p>
+      <ul><li><Icon name="check" size={15} /><span><b>2x Sesi Offline</b> bersama Coach.</span></li><li><Icon name="check" size={15} /><span><b>2x Online Check-ins</b> via WA.</span></li><li><Icon name="check" size={15} /><span><b>Program + Tracker</b> periode 2 minggu.</span></li><li><Icon name="check" size={15} /><span><b>2x Review/bulan</b> &amp; respons WA 3 hari.</span></li></ul>
+      <a class="btn btn-lime" href={WA_HALF} target="_blank" rel="noopener">Ambil Half Starter</a></div>
+    <div class="mini"><span class="tag" style="color:var(--muted);border-color:var(--line)">[OFFLINE // 1 SESI]</span>
+      <h4>Offline Insidentil</h4><div class="per">Rp75.000 <small>/ sesi</small></div>
+      <p>Satu sesi tatap muka, bayar per kedatangan.</p>
+      <ul><li><Icon name="check" size={15} /><span><b>1x Sesi 1-on-1</b> 60–75 menit.</span></li><li><Icon name="check" size={15} /><span><b>Realtime Cueing</b> teknik &amp; form.</span></li><li><Icon name="check" size={15} /><span>Tiket gym ditanggung mandiri.</span></li></ul>
+      <a class="btn btn-ghost" href={WA_INSIDENTIL} target="_blank" rel="noopener">Booking 1 Sesi</a></div>
+    <div class="mini"><span class="tag" style="color:var(--muted);border-color:var(--line)">[ONLINE // 1 SESI]</span>
+      <h4>Online Tunggal</h4><div class="per">Rp50.000 <small>/ sesi</small></div>
+      <p>Satu kali evaluasi jarak jauh, tanpa langganan.</p>
+      <ul><li><Icon name="check" size={15} /><span><b>1x Video Form Breakdown</b> async.</span></li><li><Icon name="check" size={15} /><span><b>1x Penyesuaian Program</b> tertulis.</span></li><li><Icon name="check" size={15} /><span>Tanya jawab WA 1x24 jam.</span></li></ul>
+      <a class="btn btn-ghost" href={WA_SINGLE} target="_blank" rel="noopener">Ambil 1 Sesi</a></div>
+  </div>
+</div></section>
+
+<!-- TRANSPARENCY -->
+<section id="transparansi"><div class="wrap">
+  <div class="trans">
+    <span class="eyebrow">[ETHICAL FITNESS PLEDGE]</span>
+    <h2 class="sec-title" style="font-size:1.6rem">Kejujuran adalah Fondasi Kami.</h2>
+    <blockquote>"Industri fitness dipenuhi janji sixpack 30 hari. Kami menolak itu. Kami partner latihanmu yang berdiri pada bukti dan kejujuran biomekanika."</blockquote>
+    <p style="color:var(--muted);font-size:.9rem">Kami percaya pada progres yang transparan. STRIV berfokus pada edukasi dasar latihan beban, teknik, dan accountability. Kami bukan layanan rehabilitasi medis. Coach kami memandu berdasarkan pengalaman praktis dua tahun yang terdokumentasi dan terus berkembang menuju sertifikasi profesional. Keamanan dan progres riil kamu adalah prioritas mutlak kami.</p>
+    <div class="two">
+      <div class="do ok"><b><Icon name="check" size={13} /> STANDAR YANG KAMI JALANKAN</b><ul><li>• Form over ego, teknik nomor satu.</li><li>• Logging repetisi &amp; volume terukur.</li><li>• Penjelasan logika biomekanik tiap gerakan.</li></ul></div>
+      <div class="do no"><b><Icon name="x" size={13} /> TIDAK AKAN KAMI LAKUKAN</b><ul><li>• TIDAK janji fat loss instan 10kg/2 minggu.</li><li>• TIDAK paksa beli suplemen mahal.</li><li>• TIDAK biarkan latihan sampai cedera.</li></ul></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- FAQ -->
+<section id="faq"><div class="wrap">
+  <div class="center"><span class="eyebrow">[FAQ]</span><h2 class="sec-title">Pertanyaan Umum</h2></div>
+  <div class="faq-list">
+    <details open><summary>Pemula total, belum pernah ke gym. Aman?<Icon name="chevron-down" size={18} /></summary><p>Sangat aman. 70% klien mulai dari nol. Program dimulai dari adaptasi anatomis, kalistenik ringan, dumbbell ringan, hingga percaya diri memegang barbell.</p></details>
+    <details><summary>Di gym mana sesi offline dilakukan?<Icon name="chevron-down" size={18} /></summary><p>Fleksibel: gym langgananmu, gym apartemen, atau gym mitra di Surabaya, Sidoarjo, dan Gresik. Tiket gym ditanggung mandiri.</p></details>
+    <details><summary>Jadwal kerja dinamis, bisa?<Icon name="chevron-down" size={18} /></summary><p>Bisa. Paket Hybrid fleksibel: latihan mandiri via panduan WA saat sibuk, tatap muka saat longgar. Reschedule H-1 tanpa hangus.</p></details>
+    <details><summary>Harus beli suplemen (whey/creatine)?<Icon name="chevron-down" size={18} /></summary><p>Tidak wajib. Fondasi = whole foods (ayam, telur, tempe, tahu, nasi, sayur). Suplemen opsional jika protein harian kurang.</p></details>
+  </div>
+</div></section>
+
+<!-- FINAL CTA -->
+<section><div class="wrap">
+  <div class="final-box">
+    <img src="/symbol_logo.svg" alt="STRIV" width="44" height="44" loading="lazy" style="margin:0 auto 1rem;display:block" />
+    <span class="eyebrow">[FOUNDING COHORT // FINAL CALL]</span>
+    <h2 class="sec-title">Siap membangun sistem latihanmu?</h2>
+    <p>Slot untuk Founding Clients sangat terbatas agar kualitas pendampingan tetap maksimal.</p>
+    <div class="cta-row" style="margin-bottom:0">
+      <a class="btn btn-lime" href={WA_GENERAL} target="_blank" rel="noopener"><Icon name="message-circle" size={16} /> Konsultasi Sekarang (WhatsApp)</a>
+      <a class="btn btn-ghost" href={FORM_URL}><Icon name="clipboard-check" size={16} /> Isi Form Assessment</a>
+    </div>
+    <div class="micro">[FREE INTAKE AUDIT • RESPONSE &lt; 2 HOURS]</div>
+  </div>
+</div></section>
+
+</Layout>
