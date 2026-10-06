@@ -3,18 +3,20 @@ import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 const WA_GROUP = "https://chat.whatsapp.com/HDpVCKbXcWzAYHe9tTApNN";
 ---
-<Layout active="community" title="STRIV Community Hub — Join Grup Gratis." description="Pusat komunitas edu-social STRIV Surabaya. Baca rules, masuk grup WA gratis, dan ikuti member spotlight bulanan.">
+<Layout active="community" title="STRIV Community Hub: Join Grup Gratis." description="Pusat komunitas edu-social STRIV Surabaya. Baca rules, masuk grup WA gratis, dan ikuti member spotlight bulanan.">
 
-<section class="hero"><div class="wrap">
+<section class="hero"><div class="hero-slides slides-1" aria-hidden="true"><img src="/hero-community-1.webp" alt="" fetchpriority="high" /></div><div class="wrap">
   <img class="hero-mark" src="/symbol_logo.svg" alt="STRIV" width="64" height="64" fetchpriority="high" />
   <span class="eyebrow">[COMMUNITY HUB] | JANTUNG STRIV</span>
   <h1>Stronger <em>Together.</em></h1>
-  <p>Grup WhatsApp gratis untuk belajar, bertanya, dan saling jaga konsistensi. Baca aturan main di bawah — baru klik tombol masuk.</p>
+  <p>Grup WhatsApp gratis untuk belajar, bertanya, dan saling jaga konsistensi. Baca aturan main di bawah, baru klik tombol masuk.</p>
   <div class="cta-row">
     <a class="btn btn-lime" href={WA_GROUP} target="_blank" rel="noopener"><Icon name="message-circle" size={16} /> Masuk Grup WA (Gratis)</a>
     <a class="btn btn-ghost" href="#spotlight"><Icon name="users" size={16} /> Member Spotlight</a>
   </div>
 </div></section>
+
+<nav class="subnav" aria-label="Navigasi halaman Komunitas"><div class="subnav-in"><a href="#top">Atas</a><a href="#rules">Aturan</a><a href="#spotlight">Spotlight</a></div></nav>
 
 <!-- RULES GATE -->
 <section id="rules" style="padding-top:0"><div class="wrap">
@@ -23,14 +25,15 @@ const WA_GROUP = "https://chat.whatsapp.com/HDpVCKbXcWzAYHe9tTApNN";
     <h2 class="sec-title" style="font-size:1.6rem">Grup Berkualitas = Member Berkualitas.</h2>
     <blockquote>"Kami menjaga grup tetap edukatif dan suportif. Yang melanggar 3 larangan di bawah dikeluarkan tanpa peringatan kedua."</blockquote>
     <div class="two">
-      <div class="do ok"><b><Icon name="check" size={13} /> 3 HAL YANG KAMI LAKUKAN</b><ul><li>• Bertanya teknik &amp; share video form untuk dikoreksi.</li><li>• Rayakan PR sekecil apa pun — progres tiap orang valid.</li><li>• Share info event, riset, dan nutrisi lokal yang bermanfaat.</li></ul></div>
+      <div class="do ok"><b><Icon name="check" size={13} /> 3 HAL YANG KAMI LAKUKAN</b><ul><li>• Bertanya teknik &amp; share video form untuk dikoreksi.</li><li>• Rayakan PR sekecil apa pun, progres tiap orang valid.</li><li>• Share info event, riset, dan nutrisi lokal yang bermanfaat.</li></ul></div>
       <div class="do no"><b><Icon name="x" size={13} /> 3 HAL YANG DILARANG</b><ul><li>• TIDAK jualan suplemen / obat / jasa di grup.</li><li>• TIDAK body-shaming, pamer ego lifting, atau merendahkan pemula.</li><li>• TIDAK sebar hoaks fitness tanpa sumber yang jelas.</li></ul></div>
     </div>
     <div class="cta-row" style="margin:1.75rem 0 0">
-      <a class="btn btn-lime" href={WA_GROUP} target="_blank" rel="noopener"><Icon name="check" size={16} /> Saya Setuju — Masuk Grup</a>
+      <a class="btn btn-lime" href={WA_GROUP} target="_blank" rel="noopener"><Icon name="check" size={16} /> Saya Setuju: Masuk Grup</a>
     </div>
     <div class="micro" style="text-align:center">[GRATIS • TANPA SYARAT • KELUAR KAPAN SAJA]</div>
   </div>
+  <div class="secnav"><a class="btn btn-ghost btn-sm" href="#top">← Atas</a><a class="btn btn-ghost btn-sm" href="#spotlight">Spotlight →</a></div>
 </div></section>
 
 <!-- SPOTLIGHT -->
@@ -43,7 +46,7 @@ const WA_GROUP = "https://chat.whatsapp.com/HDpVCKbXcWzAYHe9tTApNN";
     <div>
       <span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[EDISI #03 • NADIA, 24 TAHUN]</span>
       <h3 style="font-size:1.3rem;margin-top:.5rem">“Dulu lututku goyang tiap squat. Sekarang 60kg tanpa sakit pinggang.”</h3>
-      <p style="color:var(--muted);font-size:.9rem;margin-top:.75rem">Nadia gabung grup STRIV sebagai pemula total — belum pernah pegang barbell. Empat bulan latihan bodyweight → goblet squat → back squat dengan tempo 3-1-1, plus koreksi video tiap minggu di grup. Tidak ada suplemen mahal, tidak ada program ajaib. Hanya konsistensi dan teknik yang benar.</p>
+      <p style="color:var(--muted);font-size:.9rem;margin-top:.75rem">Nadia gabung grup STRIV sebagai pemula total, belum pernah pegang barbell. Empat bulan latihan bodyweight → goblet squat → back squat dengan tempo 3-1-1, plus koreksi video tiap minggu di grup. Tidak ada suplemen mahal, tidak ada program ajaib. Hanya konsistensi dan teknik yang benar.</p>
       <div class="quote"><small>[METRIK PERFORMA]</small>BW squat → 60kg × 5 reps • depth penuh • RPE 8</div>
       <div class="spot-meta"><span><b>[DURASI]</b> 4 BULAN</span><span><b>[FREKUENSI]</b> 3X/MINGGU</span><span><b>[STATUS]</b> MASIH MEMBER AKTIF</span></div>
     </div>
@@ -54,6 +57,7 @@ const WA_GROUP = "https://chat.whatsapp.com/HDpVCKbXcWzAYHe9tTApNN";
       <a class="btn btn-ghost" href={WA_GROUP} target="_blank" rel="noopener">Mulai Perjalananmu <Icon name="arrow-right" size={16} /></a>
     </div>
   </div>
+  <div class="secnav"><a class="btn btn-ghost btn-sm" href="#rules">← Aturan</a><a class="btn btn-ghost btn-sm" href="/lab">Lab →</a></div>
 </div></section>
 
 </Layout>

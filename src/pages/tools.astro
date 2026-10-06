@@ -1,0 +1,593 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+---
+<Layout active="tools" title="STRIV Tools: Logger, Kalkulator, Timer & Program Builder." description="Tools fitness gratis: workout logger, kalkulator 1RM & TDEE, rest timer HIIT, dan program builder. Data tersimpan di HP-mu.">
+<style>
+  .tabs{display:flex;gap:.4rem;overflow-x:auto;scrollbar-width:none;margin-top:1.75rem;justify-content:flex-start}
+  @media(min-width:640px){.tabs{justify-content:center}}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:none;background:transparent;border:1px solid var(--line);border-radius:999px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.06em;padding:.55rem 1.1rem;cursor:pointer;font-family:monospace;text-transform:uppercase}
+  .tab.on{color:var(--lime);border-color:rgba(183,240,0,.5);background:rgba(183,240,0,.08)}
+  .toolpane{display:none;margin-top:1.5rem}
+  .toolpane.on{display:block}
+  .field{display:grid;gap:.35rem;margin-bottom:.8rem}
+  .field label{font-size:10px;font-family:monospace;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+  .field input,.field select{background:#0b0c0e;border:1px solid var(--line2);border-radius:8px;color:var(--ink);font-size:.9rem;padding:.65rem .9rem;font-family:inherit;width:100%}
+  .field input:focus,.field select:focus{outline:none;border-color:rgba(183,240,0,.5)}
+  .frow{display:grid;gap:.8rem;grid-template-columns:1fr 1fr}
+  @media(max-width:480px){.frow{grid-template-columns:1fr}}
+  .timer-big{font-family:"Plus Jakarta Sans";font-weight:800;font-size:clamp(3.5rem,14vw,5.5rem);text-align:center;line-height:1;color:#fff;font-variant-numeric:tabular-nums}
+  .heat{display:grid;grid-template-columns:repeat(12,1fr);gap:3px;margin-top:.5rem}
+  .heat i{aspect-ratio:1/1;border-radius:3px;background:#262626}
+  .bar{height:10px;background:#262626;border-radius:99px;overflow:hidden;margin-top:.5rem}
+  .bar b{display:block;height:100%;background:var(--lime);border-radius:99px}
+  .timer-state{text-align:center;font-family:monospace;font-size:11px;letter-spacing:.12em;color:var(--lime);margin:.5rem 0 1rem}
+  .tbtns{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
+  .result{background:#0b0c0e;border:1px solid var(--line);border-radius:8px;padding:.75rem 1rem;font-size:.85rem;color:#d4d4d4;margin-top:.8rem}
+  .result b{color:var(--lime)}
+  .logrow{display:flex;justify-content:space-between;gap:.5rem;padding:.5rem 0;border-bottom:1px solid var(--line);font-size:.82rem}
+  .logrow small{color:var(--muted);font-family:monospace}
+  table.plan{width:100%;border-collapse:collapse;font-size:.82rem;margin-top:.8rem}
+  table.plan th,table.plan td{padding:.55rem .7rem;border-bottom:1px solid var(--line);text-align:left}
+  table.plan th{font-family:monospace;font-size:10px;letter-spacing:.08em;color:var(--lime)}
+</style>
+
+<section class="hero"><div class="hero-slides slides-1" aria-hidden="true"><img src="/hero-tools-1.webp" alt="" fetchpriority="high" /></div><div class="wrap">
+  <img class="hero-mark" src="/symbol_logo.svg" alt="STRIV" width="64" height="64" fetchpriority="high" />
+  <span class="eyebrow">[STRIV TOOLS] | GRATIS • OFFLINE • TANPA AKUN</span>
+  <h1>Your Gym.<br /><em>In Your Pocket.</em></h1>
+  <p>Catat latihan, hitung kebutuhan, atur timer, susun program, semua di HP-mu, bisa offline setelah install.</p>
+  <div class="tabs" role="tablist" aria-label="Tools">
+    <button type="button" class="tab on" data-tab="logger" role="tab">Logger</button>
+    <button type="button" class="tab" data-tab="tracker" role="tab">Tracker</button>
+    <button type="button" class="tab" data-tab="kalk" role="tab">Kalkulator</button>
+    <button type="button" class="tab" data-tab="lari" role="tab">Lari</button>
+    <button type="button" class="tab" data-tab="timer" role="tab">Timer</button>
+    <button type="button" class="tab" data-tab="builder" role="tab">Program</button>
+  </div>
+</div></section>
+
+<nav class="subnav" aria-label="Navigasi Tools"><div class="subnav-in"><a href="#top">Atas</a><a href="#panes" data-goto="logger">Logger</a><a href="#panes" data-goto="tracker">Tracker</a><a href="#panes" data-goto="kalk">Kalkulator</a><a href="#panes" data-goto="lari">Lari</a><a href="#panes" data-goto="timer">Timer</a><a href="#panes" data-goto="builder">Program</a></div></nav>
+
+<div class="wrap" id="panes" style="padding-bottom:4rem;scroll-margin-top:10rem">
+<!-- LOGGER -->
+<div class="toolpane on" id="pane-logger">
+  <div class="grid3" style="margin-top:0">
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[CATAT SET]</span>
+      <h3><Icon name="dumbbell" size={20} /> Set Baru</h3>
+      <div class="field"><label>Gerakan</label><input id="lg-ex" list="lg-list" placeholder="mis. Squat" autocomplete="off" /><datalist id="lg-list"></datalist></div>
+      <div class="frow">
+        <div class="field"><label>Beban (kg)</label><input id="lg-w" type="number" min="0" step="0.5" value="20" /></div>
+        <div class="field"><label>Reps</label><input id="lg-r" type="number" min="1" step="1" value="8" /></div>
+      </div>
+      <div class="field"><label>RPE (1–10)</label><input id="lg-rpe" type="number" min="1" max="10" step="0.5" value="8" /></div>
+      <button type="button" class="btn btn-lime btn-sm" id="lg-add" style="width:100%">Tambah Set</button>
+      <div class="foot"><span id="lg-today">Hari ini: 0 set</span><span>tersimpan lokal</span></div>
+    </div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[PROGRES]</span>
+      <h3><Icon name="chart-line" size={20} /> PR &amp; Grafik</h3>
+      <div class="field"><label>Lihat gerakan</label><select id="lg-chart"></select></div>
+      <div id="lg-pr"></div>
+      <svg id="lg-svg" viewBox="0 0 300 120" style="width:100%;height:auto;display:block;margin-top:.5rem" role="img" aria-label="Grafik volume latihan"></svg>
+      <div class="tbtns" style="margin-top:.6rem;justify-content:flex-start">
+        <button type="button" class="btn btn-lime btn-sm" id="lg-share">Share PR (PNG)</button>
+      </div>
+      <canvas id="pr-canvas" width="1080" height="1080" hidden></canvas>
+      <div class="foot"><span>volume = beban × reps</span><span>12 sesi terakhir</span></div>
+    </div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[RIWAYAT]</span>
+      <h3><Icon name="calendar-check" size={20} /> 7 Hari Terakhir</h3>
+      <div id="lg-hist"></div>
+      <div class="tbtns" style="margin-top:1rem;justify-content:flex-start">
+        <button type="button" class="btn btn-ghost btn-sm" id="lg-export">Export</button>
+        <button type="button" class="btn btn-ghost btn-sm" id="lg-import-btn">Import</button>
+        <input type="file" id="lg-import" accept="application/json" hidden />
+      </div>
+      <div class="foot"><span>JSON • siap-cloud nanti</span><span id="lg-count"></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- KALKULATOR -->
+<div class="toolpane" id="pane-kalk">
+  <div class="grid3" style="margin-top:0">
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[1RM]</span>
+      <h3><Icon name="zap" size={20} /> Estimasi 1RM</h3>
+      <div class="frow">
+        <div class="field"><label>Beban (kg)</label><input id="c-w" type="number" min="1" value="60" /></div>
+        <div class="field"><label>Reps maks</label><input id="c-r" type="number" min="1" max="12" value="5" /></div>
+      </div>
+      <button type="button" class="btn btn-lime btn-sm" id="c-go" style="width:100%">Hitung</button>
+      <div class="result" id="c-out">1RM ≈ <b>-</b></div>
+    </div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[TDEE]</span>
+      <h3><Icon name="activity" size={20} /> Kalori &amp; Protein</h3>
+      <div class="frow">
+        <div class="field"><label>BB (kg)</label><input id="t-bb" type="number" min="30" value="70" /></div>
+        <div class="field"><label>TB (cm)</label><input id="t-tb" type="number" min="130" value="170" /></div>
+      </div>
+      <div class="frow">
+        <div class="field"><label>Umur</label><input id="t-u" type="number" min="14" value="25" /></div>
+        <div class="field"><label>Aktivitas</label><select id="t-a"><option value="1.375">Ringan (1–3x/minggu)</option><option value="1.55" selected>Sedang (3–5x)</option><option value="1.725">Berat (6–7x)</option></select></div>
+      </div>
+      <button type="button" class="btn btn-lime btn-sm" id="t-go" style="width:100%">Hitung</button>
+      <div class="result" id="t-out">TDEE ≈ <b>-</b></div>
+    </div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[PLATE]</span>
+      <h3><Icon name="dumbbell" size={20} /> Plate Barbel 20kg</h3>
+      <div class="field"><label>Target total (kg)</label><input id="p-t" type="number" min="25" step="2.5" value="60" /></div>
+      <button type="button" class="btn btn-lime btn-sm" id="p-go" style="width:100%">Hitung</button>
+      <div class="result" id="p-out">Per sisi: <b>-</b></div>
+    </div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[WILKS]</span>
+      <h3><Icon name="zap" size={20} /> Skor Wilks</h3>
+      <div class="frow">
+        <div class="field"><label>Total SBD (kg)</label><input id="w-t" type="number" min="0" value="300" /></div>
+        <div class="field"><label>BB (kg)</label><input id="w-bb" type="number" min="30" value="70" /></div>
+      </div>
+      <div class="field"><label>Kategori</label><select id="w-s"><option value="m">Putra</option><option value="f">Putri</option></select></div>
+      <button type="button" class="btn btn-lime btn-sm" id="w-go" style="width:100%">Hitung</button>
+      <div class="result" id="w-out">Wilks ≈ <b>-</b></div>
+    </div>
+  </div>
+</div>
+
+<!-- TIMER -->
+<div class="toolpane" id="pane-timer">
+  <div class="grid3" style="margin-top:0">
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[REST]</span>
+      <h3><Icon name="calendar-check" size={20} /> Rest Antar Set</h3>
+      <div class="timer-big" id="tm-display">01:00</div>
+      <div class="timer-state" id="tm-state">SIAP • PILIH DURASI</div>
+      <div class="tbtns">
+        <button type="button" class="btn btn-ghost btn-sm" data-rest="60">1 mnt</button>
+        <button type="button" class="btn btn-ghost btn-sm" data-rest="120">2 mnt</button>
+        <button type="button" class="btn btn-ghost btn-sm" data-rest="180">3 mnt</button>
+        <button type="button" class="btn btn-ghost btn-sm" data-rest="300">5 mnt</button>
+      </div>
+      <div class="tbtns" style="margin-top:.6rem">
+        <button type="button" class="btn btn-lime btn-sm" id="tm-start">Mulai</button>
+        <button type="button" class="btn btn-ghost btn-sm" id="tm-reset">Reset</button>
+      </div>
+    </div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[HIIT]</span>
+      <h3><Icon name="trending-up" size={20} /> Interval Timer</h3>
+      <div class="frow">
+        <div class="field"><label>Kerja (detik)</label><input id="hi-w" type="number" min="5" value="30" /></div>
+        <div class="field"><label>Rest (detik)</label><input id="hi-r" type="number" min="5" value="15" /></div>
+      </div>
+      <div class="field"><label>Ronde</label><input id="hi-n" type="number" min="1" max="30" value="8" /></div>
+      <div class="tbtns">
+        <button type="button" class="btn btn-lime btn-sm" id="hi-start">Mulai HIIT</button>
+        <button type="button" class="btn btn-ghost btn-sm" id="hi-stop">Stop</button>
+      </div>
+      <div class="foot"><span>bunyi + getar tiap ganti fase</span><span id="hi-state"></span></div>
+    </div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[CATATAN]</span>
+      <h3><Icon name="clipboard-check" size={20} /> Biar Akurat</h3>
+      <p>Browser membatasi timer saat layar mati, untuk sesi penting kunci layar mati (tetap nyala) atau pakai jam tangan. Bunyi memakai WebAudio, tanpa file.</p>
+      <div class="foot"><span>rest ≥2 mnt untuk strength</span><span><a class="src" href="/lab#metode">RPE/RIR →</a></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- BUILDER -->
+<div class="toolpane" id="pane-builder">
+  <div class="center"><span class="eyebrow">[PROGRAM BUILDER]</span>
+    <h2 class="sec-title">Susun Split-mu.</h2>
+    <p class="sec-sub">Template berbasis STRIV Lab. Hasil bisa dikirim ke Logger sebagai panduan sesi hari ini.</p>
+  </div>
+  <div class="grid3">
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[INPUT]</span>
+      <h3><Icon name="users" size={20} /> Profilmu</h3>
+      <div class="field"><label>Goal utama</label><select id="b-goal"><option value="otot">Otot besar (hipertrofi)</option><option value="kuat">Kuat (powerlifting)</option><option value="fatloss">Fat loss + bugar</option><option value="hybrid">Hybrid (kuat + lari)</option></select></div>
+      <div class="field"><label>Hari per minggu</label><select id="b-days"><option value="3">3 hari</option><option value="4">4 hari</option><option value="5">5 hari</option></select></div>
+      <button type="button" class="btn btn-lime btn-sm" id="b-go" style="width:100%">Generate Program</button>
+    </div>
+    <div class="card" style="grid-column:span 1"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[HASIL]</span>
+      <h3><Icon name="chart-line" size={20} /> Split Mingguan</h3>
+      <div id="b-out"><p>Belum ada program. Pilih goal &amp; generate.</p></div>
+      <div class="tbtns" style="margin-top:1rem;justify-content:flex-start">
+        <button type="button" class="btn btn-lime btn-sm" id="b-send" disabled>Kirim ke Logger</button>
+        <button type="button" class="btn btn-ghost btn-sm" id="b-copy" disabled>Salin Teks</button>
+      </div>
+    </div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[ATURAN MAIN]</span>
+      <h3><Icon name="shield-check" size={20} /> Progres Mingguan</h3>
+      <p>Naikkan 2–10% saat batas atas reps tercapai (double progression). Tiap 4–8 minggu ambil deload −40–60%. Stagnan 2 minggu? Cek tidur &amp; protein dulu.</p>
+      <div class="foot"><span>detail di Lab</span><span><a class="src" href="/lab#metode">12 metode →</a></span></div>
+    </div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[WARM-UP]</span>
+      <h3><Icon name="activity" size={20} /> Pemanasan Acak</h3>
+      <div class="field"><label>Fokus sesi</label><select id="wu-f"><option value="squat">Squat / Kaki</option><option value="bench">Bench / Upper</option><option value="deadlift">Deadlift / Hinge</option><option value="general">General / HIIT</option></select></div>
+      <button type="button" class="btn btn-lime btn-sm" id="wu-go" style="width:100%">Generate 5–10 mnt</button>
+      <div id="wu-out" style="margin-top:.6rem"></div>
+    </div>
+  </div>
+</div>
+
+<!-- TRACKER -->
+<div class="toolpane" id="pane-tracker">
+  <div class="grid3" style="margin-top:0">
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[BADAN]</span>
+      <h3><Icon name="users" size={20} /> Ukur Badan</h3>
+      <div class="frow">
+        <div class="field"><label>BB (kg)</label><input id="tr-bb" type="number" min="20" step="0.1" placeholder="70" /></div>
+        <div class="field"><label>Pinggang (cm)</label><input id="tr-pg" type="number" min="0" step="0.5" placeholder="opsional" /></div>
+      </div>
+      <div class="frow">
+        <div class="field"><label>Dada (cm)</label><input id="tr-dd" type="number" min="0" step="0.5" placeholder="opsional" /></div>
+        <div class="field"><label>Lengan (cm)</label><input id="tr-lg" type="number" min="0" step="0.5" placeholder="opsional" /></div>
+      </div>
+      <button type="button" class="btn btn-lime btn-sm" id="tr-add" style="width:100%">Catat Hari Ini</button>
+      <svg id="tr-svg" viewBox="0 0 300 80" style="width:100%;height:auto;display:block;margin-top:.5rem" role="img" aria-label="Grafik berat badan"></svg>
+      <div class="foot"><span id="tr-last">belum ada data</span><span>BB + lingkar</span></div>
+    </div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[STREAK]</span>
+      <h3><Icon name="calendar-check" size={20} /> Konsistensi 12 Minggu</h3>
+      <div class="heat" id="tr-heat"></div>
+      <div class="foot"><span id="tr-streak">0 sesi / 84 hari</span><span>dari Logger</span></div>
+    </div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[PROTEIN]</span>
+      <h3><Icon name="clipboard-check" size={20} /> Protein Harian</h3>
+      <div class="result" id="pr-target">Target: <b>-</b></div>
+      <div class="frow" style="margin-top:.6rem">
+        <div class="field"><label>BB (kg)</label><input id="pr-bb" type="number" min="20" value="70" /></div>
+        <div class="field"><label>Protein (g)</label><input id="pr-g" type="number" min="0" value="30" /></div>
+      </div>
+      <button type="button" class="btn btn-lime btn-sm" id="pr-add" style="width:100%">Catat Makan</button>
+      <div class="bar"><b id="pr-bar" style="width:0%"></b></div>
+      <div class="foot"><span id="pr-today">0g hari ini</span><span>1,6 g/kg</span></div>
+    </div>
+  </div>
+  <div class="grid3">
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[READINESS]</span>
+      <h3><Icon name="sparkles" size={20} /> Siap Latihan?</h3>
+      <div class="frow">
+        <div class="field"><label>Tidur (1–5)</label><select id="rd-t"><option>5</option><option>4</option><option selected>3</option><option>2</option><option>1</option></select></div>
+        <div class="field"><label>Nyeri/capek (1–5)</label><select id="rd-n"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      </div>
+      <div class="field"><label>Energi/mood (1–5)</label><select id="rd-e"><option>5</option><option>4</option><option selected>3</option><option>2</option><option>1</option></select></div>
+      <button type="button" class="btn btn-lime btn-sm" id="rd-go" style="width:100%">Cek Readiness</button>
+      <div class="result" id="rd-out">Skor: <b>-</b></div>
+    </div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[INFO]</span>
+      <h3><Icon name="shield-check" size={20} /> Baca Datamu</h3>
+      <p>Streak dibaca otomatis dari Logger: makin konsisten, makin hijau. BB &amp; lingkar cukup diukur 1–2× seminggu, bukan tiap hari. Protein ikut target 1,6 g/kg dari Lab.</p>
+      <div class="foot"><span>semua tersimpan lokal</span><span><a class="src" href="/lab#blog">Lab →</a></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- LARI -->
+<div class="toolpane" id="pane-lari">
+  <div class="grid3" style="margin-top:0">
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[HR ZONE]</span>
+      <h3><Icon name="activity" size={20} /> Zona Detak Jantung</h3>
+      <div class="frow">
+        <div class="field"><label>HR maks</label><input id="hr-max" type="number" min="120" max="220" value="190" /></div>
+        <div class="field"><label>HR istirahat</label><input id="hr-rest" type="number" min="30" max="100" value="60" /></div>
+      </div>
+      <button type="button" class="btn btn-lime btn-sm" id="hr-go" style="width:100%">Hitung Zona</button>
+      <div id="hr-out" style="margin-top:.6rem"></div>
+    </div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[PACE]</span>
+      <h3><Icon name="trending-up" size={20} /> Pace &amp; Estimasi</h3>
+      <div class="frow">
+        <div class="field"><label>Jarak (km)</label><input id="pc-d" type="number" min="0.1" step="0.1" value="5" /></div>
+        <div class="field"><label>Waktu (mm:ss)</label><input id="pc-t" value="30:00" /></div>
+      </div>
+      <button type="button" class="btn btn-lime btn-sm" id="pc-go" style="width:100%">Hitung Pace</button>
+      <div class="result" id="pc-out">Pace: <b>-</b></div>
+      <div class="frow" style="margin-top:.6rem">
+        <div class="field"><label>Target pace (/km)</label><input id="pc-p" value="6:00" /></div>
+        <div class="field"><label>Jarak target</label><input id="pc-d2" type="number" min="0.1" step="0.1" value="10" /></div>
+      </div>
+      <button type="button" class="btn btn-ghost btn-sm" id="pc-go2" style="width:100%">Estimasi Finish</button>
+      <div class="result" id="pc-out2">Finish: <b>-</b></div>
+    </div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[HYBRID]</span>
+      <h3><Icon name="zap" size={20} /> Aturan Hybrid</h3>
+      <p>80% lari di zona 2 (bisa ngobrol), 20% interval. Pisahkan hari beban berat &amp; lari berat. Sepeda/zona 2 bila otot prioritas.</p>
+      <div class="foot"><span>detail interference effect</span><span><a class="src" href="/lab#metode">metode hybrid →</a></span></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+</div>
+
+<section style="padding-top:0"><div class="wrap">
+  <div class="final-box">
+    <img src="/symbol_logo.svg" alt="STRIV" width="44" height="44" loading="lazy" style="margin:0 auto 1rem;display:block" />
+    <span class="eyebrow">[PRIVASI]</span>
+    <h2 class="sec-title">Datamu Milikmu.</h2>
+    <p>Semua log tersimpan di HP ini (localStorage), tanpa akun. Export JSON berkala sebagai backup, formatnya siap disambung ke cloud nanti.</p>
+    <div class="micro">[KEY: striv.v1 • SCHEMA v1]</div>
+  </div>
+</div></section>
+
+<script>
+// STRIV Tools: store tipis siap-cloud: ganti fungsi load/save dengan API tanpa ubah UI.
+(function(){
+  "use strict";
+  var KEY='striv.v1';
+  var store={
+    load:function(){try{var d=JSON.parse(localStorage.getItem(KEY))||{};d.logs=d.logs||[];d.program=d.program||null;d.body=d.body||[];d.protein=d.protein||{};d.ready=d.ready||[];return d;}catch(e){return{logs:[],program:null,body:[],protein:{},ready:[]};}},
+    save:function(d){try{localStorage.setItem(KEY,JSON.stringify({v:1,logs:d.logs||[],program:d.program||null,body:d.body||[],protein:d.protein||{},ready:d.ready||[]}));}catch(e){}},
+    clear:function(){localStorage.removeItem(KEY);}
+  };
+  var S=store.load();
+  function today(){return new Date().toISOString().slice(0,10);}
+  function $(id){return document.getElementById(id);}
+  // tabs
+  document.querySelectorAll('.tab').forEach(function(t){t.addEventListener('click',function(){
+    document.querySelectorAll('.tab').forEach(function(x){x.classList.toggle('on',x===t);});
+    document.querySelectorAll('.toolpane').forEach(function(p){p.classList.toggle('on',p.id==='pane-'+t.getAttribute('data-tab'));});
+    try{localStorage.setItem('striv.ui.tab',t.getAttribute('data-tab'));}catch(e){}
+  });});
+  function goTab(k){var t=document.querySelector('.tab[data-tab="'+k+'"]');if(t)t.click();}
+  try{
+    var savedTab=null;try{savedTab=localStorage.getItem('striv.ui.tab');}catch(e){}
+    if(savedTab&&document.querySelector('.tab[data-tab="'+savedTab+'"]'))goTab(savedTab);
+  }catch(e){}
+  document.querySelectorAll('[data-goto]').forEach(function(a){a.addEventListener('click',function(){goTab(a.getAttribute('data-goto'));});});
+  // ---- LOGGER ----
+  function exList(){var s={},a=[];S.logs.forEach(function(l){if(!s[l.ex]){s[l.ex]=1;a.push(l.ex);}});return a;}
+  function refreshLogger(){
+    var t=today(),n=0;S.logs.forEach(function(l){if(l.d===t)n++;});
+    $('lg-today').textContent='Hari ini: '+n+' set';
+    $('lg-count').textContent=S.logs.length+' set total';
+    var exs=exList();
+    $('lg-chart').innerHTML=exs.map(function(e){return '<option>'+e+'</option>';}).join('')||'<option>-</option>';
+    $('lg-list').innerHTML=exs.map(function(e){return '<option value="'+e+'">';}).join('');
+    if(S.program&&S.program.day){$('lg-list').innerHTML+=S.program.day.list.map(function(e){return '<option value="'+e+'">';}).join('');}
+    drawChart();drawHist();renderTrack();
+  }
+  function drawChart(){
+    var ex=$('lg-chart').value,pts=S.logs.filter(function(l){return l.ex===ex;}).slice(-12);
+    var svg=$('lg-svg');
+    if(!pts.length){svg.innerHTML='<text x="10" y="60" fill="#9ca3af" font-size="11">Catat set dulu: grafik muncul di sini.</text>';$('lg-pr').innerHTML='';return;}
+    var vol=pts.map(function(l){return l.w*l.r;}),mx=Math.max.apply(null,vol),mn=Math.min.apply(null,vol),rg=(mx-mn)||1;
+    var p=pts.map(function(_,i){return (10+i*(280/Math.max(pts.length-1,1)))+','+(110-((vol[i]-mn)/rg)*90);}).join(' ');
+    svg.innerHTML='<polyline points="'+p+'" fill="none" stroke="#b7f000" stroke-width="2.5"/>'+pts.map(function(l,i){
+      var x=10+i*(280/Math.max(pts.length-1,1)),y=110-((vol[i]-mn)/rg)*90;
+      return '<circle cx="'+x+'" cy="'+y+'" r="3.5" fill="#b7f000"/>';}).join('');
+    var best=S.logs.filter(function(l){return l.ex===ex;}).reduce(function(a,b){return b.w>a.w?b:a;});
+    $('lg-pr').innerHTML='<div class="result">PR beban: <b>'+best.w+'kg × '+best.r+'</b> ('+best.d+')</div>';
+  }
+  $('lg-chart').addEventListener('change',drawChart);
+  $('lg-add').addEventListener('click',function(){
+    var ex=$('lg-ex').value.trim();if(!ex){$('lg-ex').focus();return;}
+    S.logs.push({d:today(),ex:ex,w:parseFloat($('lg-w').value)||0,r:parseInt($('lg-r').value)||0,rpe:parseFloat($('lg-rpe').value)||8});
+    store.save(S);$('lg-ex').value='';refreshLogger();
+  });
+  function drawHist(){
+    var days=[];for(var i=6;i>=0;i--){var d=new Date();d.setDate(d.getDate()-i);days.push(d.toISOString().slice(0,10));}
+    $('lg-hist').innerHTML=days.map(function(d){
+      var ls=S.logs.filter(function(l){return l.d===d;});
+      var v=ls.reduce(function(a,l){return a+l.w*l.r;},0);
+      return '<div class="logrow"><span>'+d+'</span><small>'+ls.length+' set • '+(v>=1000?(v/1000).toFixed(1)+'t':Math.round(v)+'kg')+'</small></div>';
+    }).join('');
+  }
+  $('lg-export').addEventListener('click',function(){
+    var b=new Blob([JSON.stringify({v:1,exported:today(),logs:S.logs,program:S.program,body:S.body,protein:S.protein,ready:S.ready})],{type:'application/json'});
+    var a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='striv-backup-'+today()+'.json';a.click();
+  });
+  $('lg-import-btn').addEventListener('click',function(){$('lg-import').click();});
+  $('lg-import').addEventListener('change',function(e){
+    var f=e.target.files[0];if(!f)return;
+    var r=new FileReader();r.onload=function(){try{var d=JSON.parse(r.result);if(d.logs){S.logs=d.logs;S.program=d.program||null;S.body=d.body||[];S.protein=d.protein||{};S.ready=d.ready||[];store.save(S);refreshLogger();}}catch(err){}};
+    r.readAsText(f);
+  });
+  // ---- KALKULATOR ----
+  $('c-go').addEventListener('click',function(){
+    var w=parseFloat($('c-w').value)||0,r=parseInt($('c-r').value)||0;
+    if(w<=0||r<1)return;
+    var m=w*(1+r/30);
+    var rows=[1,.95,.9,.85,.8].map(function(p){return Math.round(m*p*2)/2+'kg ('+Math.round(p*100)+'%)';}).join(' • ');
+    $('c-out').innerHTML='1RM ≈ <b>'+(Math.round(m*2)/2)+'kg</b> (Epley)<br /><small style="color:var(--muted)">'+rows+'</small>';
+  });
+  $('t-go').addEventListener('click',function(){
+    var bb=parseFloat($('t-bb').value)||0,tb=parseFloat($('t-tb').value)||0,u=parseInt($('t-u').value)||0;
+    if(bb<=0||tb<=0||u<=0)return;
+    var bmr=10*bb+6.25*tb-5*u+5, tdee=Math.round(bmr*parseFloat($('t-a').value)), p=Math.round(bb*1.6);
+    $('t-out').innerHTML='TDEE ≈ <b>'+tdee+' kkal</b> • Protein <b>'+p+'g</b><br /><small style="color:var(--muted)">Cut: '+(tdee-400)+' • Bulk: '+(tdee+250)+' kkal</small>';
+  });
+  $('p-go').addEventListener('click',function(){
+    var t=parseFloat($('p-t').value)||0,avail=[25,20,15,10,5,2.5];
+    if(t<22.5){$('p-out').innerHTML='Minimal <b>22.5kg</b> (bar + collar).';return;}
+    var side=(t-20)/2,out=[];
+    avail.forEach(function(p){while(side>=p-1e-9){out.push(p);side-=p;}});
+    $('p-out').innerHTML='Per sisi: <b>'+(out.length?out.join(' + ')+'kg':'bar kosong')+'</b>'+(side>0.01?'<br /><small style="color:var(--muted)">sisa '+side.toFixed(1)+'kg: pakai fractional</small>':'');
+  });
+  // ---- TIMER ----
+  var tick=null,left=60,audio=null;
+  function beep(n){try{
+    audio=audio||new (window.AudioContext||window.webkitAudioContext)();
+    for(var i=0;i<(n||1);i++)(function(i){
+      var o=audio.createOscillator(),g=audio.createGain();
+      o.connect(g);g.connect(audio.destination);o.frequency.value=i===(n-1)?880:660;
+      var t=audio.currentTime+i*0.35;o.start(t);g.gain.setValueAtTime(0.25,t);g.gain.exponentialRampToValueAtTime(0.01,t+0.3);o.stop(t+0.32);
+    })(i);
+    if(navigator.vibrate)navigator.vibrate(200);
+  }catch(e){}}
+  function fmt(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');}
+  document.querySelectorAll('[data-rest]').forEach(function(b){b.addEventListener('click',function(){
+    clearInterval(tick);left=parseInt(b.getAttribute('data-rest'));$('tm-display').textContent=fmt(left);$('tm-state').textContent='SIAP • '+fmt(left);
+  });});
+  $('tm-start').addEventListener('click',function(){
+    clearInterval(tick);$('tm-state').textContent='JALAN • JANGAN SKIP REST';
+    tick=setInterval(function(){left--;var d=$('tm-display');if(!d){clearInterval(tick);return;}
+      d.textContent=fmt(Math.max(left,0));
+      if(left<=0){clearInterval(tick);beep(3);var s=$('tm-state');if(s)s.textContent='SELESAI • GASS SET BERIKUTNYA';}},1000);
+  });
+  $('tm-reset').addEventListener('click',function(){clearInterval(tick);left=60;$('tm-display').textContent='01:00';$('tm-state').textContent='SIAP • PILIH DURASI';});
+  $('hi-start').addEventListener('click',function(){
+    var w=parseInt($('hi-w').value)||30,r=parseInt($('hi-r').value)||15,n=parseInt($('hi-n').value)||8,round=1,phase='work',t=w;
+    clearInterval(tick);beep(1);
+    $('tm-display').textContent=fmt(t);$('tm-state').textContent='KERJA • RONDE 1/'+n;
+    tick=setInterval(function(){t--;
+      if(!$('tm-display')){clearInterval(tick);return;}
+      if(t<=0){
+        if(phase==='work'){phase='rest';t=r;beep(2);$('tm-state').textContent='REST • RONDE '+round+'/'+n;}
+        else{round++;if(round>n){clearInterval(tick);beep(3);$('tm-state').textContent='HIIT SELESAI • '+n+' RONDE';$('hi-state').textContent='done';return;}
+          phase='work';t=w;beep(1);$('tm-state').textContent='KERJA • RONDE '+round+'/'+n;}
+      }
+      $('tm-display').textContent=fmt(Math.max(t,0));
+    },1000);
+  });
+  $('hi-stop').addEventListener('click',function(){clearInterval(tick);$('tm-state').textContent='STOP • SIAP • PILIH DURASI';});
+  // ---- BUILDER ----
+  var PLANS={
+    'otot-3':[['Full-Body A',['Squat','Bench Press','Barbell Row','Overhead Press','Plank']],['Full-Body B',['Deadlift','Overhead Press','Pull-up/Lat Pulldown','Bulgarian Split Squat','Side Plank']],['Full-Body A+',['Squat','Bench Press','Barbell Row','Hip Thrust','Farmer Carry']]],
+    'kuat-3':[['Squat + Bench',['Squat 5×3','Bench 5×3','Barbell Row 3×8']],[ 'Deadlift + Press',['Deadlift 3×3','Overhead Press 4×5','Pull-up 3×AMRAP']],['Volume SBD',['Squat 3×5','Bench 4×5','RDL 3×8']]],
+    'fatloss-3':[['Circuit A',['Goblet Squat','Push-up','Row','KB Swing','Plank']],['Circuit B',['Deadlift ringan','Overhead Press','Lunges','Burpees','Hollow Hold']],['HIIT + Core',['HIIT 8×30:15','Farmer Carry','Side Plank','Bicycle Crunch']]],
+    'hybrid-3':[['Beban Upper',['Bench Press','Barbell Row','Overhead Press','Pull-up']],['Lari Zona 2',['Lari 40–60 mnt conversational pace']],['Beban Lower + Tempo',['Squat','RDL','Tempo run 20 mnt']]],
+    'otot-4':[['Upper A',['Bench Press','Barbell Row','Overhead Press','Curl']],['Lower A',['Squat','RDL','Leg Press','Calf Raise']],['Upper B',['Overhead Press','Pull-up','Incline DB','Triceps']],['Lower B',['Deadlift','Bulgarian Split Squat','Hip Thrust','Plank']]],
+    'kuat-4':[['Squat',['Squat 5×3','Pause Squat 3×5','Core']],['Bench',['Bench 5×3','Close-grip 3×8','Row 3×8']],['Deadlift',['Deadlift 3×3','RDL 3×8','Pull-up']],['Press + Volume',['Overhead Press 4×5','Squat 3×5','Bench 3×8']]],
+    'fatloss-4':[['Circuit A',['Goblet Squat','Push-up','Row','Plank']],['HIIT',['HIIT 10×30:15','Farmer Carry']],['Circuit B',['Deadlift ringan','Lunges','Overhead Press','Hollow Hold']],['Jalan + Core',['Jalan 45 mnt','Side Plank','Glute Bridge']]],
+    'hybrid-4':[['Beban Upper',['Bench Press','Row','Overhead Press']],['Lari Interval',['Interval 6×3 mnt']],['Beban Lower',['Squat','RDL','Split Squat']],['Long Run',['Lari 60–90 mnt santai']]],
+    'otot-5':[['Push',['Bench Press','Overhead Press','Dips','Triceps']],['Pull',['Deadlift','Pull-up','Barbell Row','Curl']],['Legs',['Squat','RDL','Leg Press','Calf']],['Upper',['Incline DB','Row','Lateral Raise','Arms']],['Lower + Core',['Bulgarian Split Squat','Hip Thrust','Plank','Farmer Carry']]],
+    'kuat-5':[['Squat',['Squat 5×3','Front Squat 3×5']],['Bench',['Bench 5×3','Close-grip 3×8']],['Deadlift',['Deadlift 3×3','RDL 3×8']],['Press',['Overhead Press 4×5','Dips 3×8']],['Volume',['Squat 3×8','Bench 3×8','Row 3×10']]],
+    'fatloss-5':[['Circuit A',['Squat','Push-up','Row']],['HIIT',['HIIT 10×30:15']],['Circuit B',['Deadlift','Lunges','Press']],['Jalan',['Jalan 45 mnt + core']],['Full-Body',['Goblet Squat','Pull-up','Hip Thrust','Plank']]],
+    'hybrid-5':[['Beban Upper',['Bench','Row','Press']],['Lari Interval',['Interval 8×3 mnt']],['Beban Lower',['Squat','RDL']],['Recovery Run',['Lari 30 mnt ringan']],['Long Run',['Lari 60–90 mnt']]]
+  };
+  var curPlan=null;
+  $('b-go').addEventListener('click',function(){
+    var k=$('b-goal').value+'-'+$('b-days').value;
+    curPlan=PLANS[k]||PLANS['otot-3'];
+    $('b-out').innerHTML='<table class="plan"><tr><th>HARI</th><th>SESI</th></tr>'+curPlan.map(function(d,i){
+      return '<tr><td><b>D'+(i+1)+'</b><br /><small style="color:var(--muted)">'+d[0]+'</small></td><td>'+d[1].join(' • ')+'</td></tr>';}).join('')+'</table>';
+    $('b-send').disabled=false;$('b-copy').disabled=false;
+  });
+  $('b-send').addEventListener('click',function(){
+    if(!curPlan)return;
+    var D=Math.min((new Date().getDay()+6)%7,curPlan.length-1);
+    S.program={goal:$('b-goal').value,days:curPlan.length,day:{name:curPlan[D][0],list:curPlan[D][1]}};
+    store.save(S);refreshLogger();
+    document.querySelector('[data-tab="logger"]').click();
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+  $('b-copy').addEventListener('click',function(){
+    if(!curPlan)return;
+    var t='STRIV Program ('+$('b-goal').value+', '+$('b-days').value+' hari):\n'+curPlan.map(function(d,i){return 'D'+(i+1)+' '+d[0]+': '+d[1].join(', ');}).join('\n');
+    if(navigator.clipboard)navigator.clipboard.writeText(t);
+  });
+  // ---- WILKS ----
+  $('w-go').addEventListener('click',function(){
+    var t=parseFloat($('w-t').value)||0,bw=parseFloat($('w-bb').value)||0;
+    if(t<=0||bw<=0)return;
+    var c=$('w-s').value==='m'
+      ?[-216.0475144,16.2606339,-0.002388645,-0.00113732,7.01863e-6,-1.291e-8]
+      :[594.31747775582,-27.23842536447,0.82112226871,-0.00930733913,4.731582e-5,-9.054e-8];
+    var denom=c[0]+c[1]*bw+c[2]*bw*bw+c[3]*Math.pow(bw,3)+c[4]*Math.pow(bw,4)+c[5]*Math.pow(bw,5);
+    $('w-out').innerHTML='Wilks ≈ <b>'+(t*500/denom).toFixed(1)+'</b><br /><small style="color:var(--muted)">400+ elite nasional • 300+ advanced • 200+ intermediate</small>';
+  });
+  // ---- SHARE PR CARD ----
+  $('lg-share').addEventListener('click',function(){
+    var ex=$('lg-chart').value;if(!ex||ex==='-')return;
+    var best=S.logs.filter(function(l){return l.ex===ex;}).reduce(function(a,b){return b.w>a.w?b:a;});
+    var cv=$('pr-canvas'),x=cv.getContext('2d');
+    x.fillStyle='#101010';x.fillRect(0,0,1080,1080);
+    x.strokeStyle='#b7f000';x.lineWidth=10;x.strokeRect(30,30,1020,1020);
+    x.textAlign='center';x.fillStyle='#b7f000';x.font='bold 64px monospace';x.fillText('★ NEW PR ★',540,220);
+    x.fillStyle='#fff';x.font='800 110px sans-serif';
+    var nm=ex.length>14?ex.slice(0,14)+'…':ex;x.fillText(nm.toUpperCase(),540,480);
+    x.fillStyle='#b7f000';x.font='800 150px sans-serif';x.fillText(best.w+'kg × '+best.r,540,700);
+    x.fillStyle='#9ca3af';x.font='48px monospace';x.fillText(best.d+' • RPE '+best.rpe,540,820);
+    x.fillStyle='#fff';x.font='bold 56px sans-serif';x.fillText('STRIV • BORN IN SURABAYA',540,950);
+    var a=document.createElement('a');a.href=cv.toDataURL('image/png');a.download='striv-pr-'+ex.replace(/\s+/g,'-')+'.png';a.click();
+  });
+  // ---- TRACKER ----
+  function spark(svg,vals,fmt){
+    if(vals.length<2){svg.innerHTML='<text x="10" y="45" fill="#9ca3af" font-size="11">Butuh ≥2 data untuk grafik.</text>';return;}
+    var mx=Math.max.apply(null,vals),mn=Math.min.apply(null,vals),rg=(mx-mn)||1;
+    var p=vals.map(function(v,i){return (10+i*(280/Math.max(vals.length-1,1)))+','+(70-((v-mn)/rg)*55);}).join(' ');
+    svg.innerHTML='<polyline points="'+p+'" fill="none" stroke="#b7f000" stroke-width="2.5"/>';
+  }
+  function renderTrack(){
+    if(!$('tr-heat'))return;
+    // streak 84 hari
+    var vol={};S.logs.forEach(function(l){vol[l.d]=(vol[l.d]||0)+l.w*l.r;});
+    var mx=1;Object.keys(vol).forEach(function(k){if(vol[k]>mx)mx=vol[k];});
+    var cells='',n=0;
+    for(var i=83;i>=0;i--){var d=new Date();d.setDate(d.getDate()-i);var k=d.toISOString().slice(0,10),v=vol[k]||0;
+      if(v)n++;
+      cells+='<i style="'+(v?'background:rgba(183,240,0,'+(0.2+0.8*v/mx).toFixed(2)+')':'')+'" title="'+k+': '+Math.round(v)+'kg"></i>';}
+    $('tr-heat').innerHTML=cells;
+    var sc=0;for(var j=0;j<84;j++){var dd=new Date();dd.setDate(dd.getDate()-j);if(vol[dd.toISOString().slice(0,10)])sc++;else break;}
+    $('tr-streak').textContent=n+' sesi / 84 hari • streak '+sc+' hari';
+    // body
+    if(S.body.length){
+      var last=S.body[S.body.length-1];
+      $('tr-last').textContent='BB '+last.bb+'kg ('+last.d+')';
+      spark($('tr-svg'),S.body.slice(-12).map(function(b){return b.bb;}));
+      $('pr-bb').value=last.bb;
+    }
+    renderProtein();
+  }
+  $('tr-add').addEventListener('click',function(){
+    var bb=parseFloat($('tr-bb').value);if(!bb||bb<=0){$('tr-bb').focus();return;}
+    S.body.push({d:today(),bb:bb,pg:parseFloat($('tr-pg').value)||null,dd:parseFloat($('tr-dd').value)||null,lg:parseFloat($('tr-lg').value)||null});
+    store.save(S);$('tr-bb').value='';$('tr-pg').value='';$('tr-dd').value='';$('tr-lg').value='';renderTrack();
+  });
+  function protTarget(){return Math.round((parseFloat($('pr-bb').value)||70)*1.6);}
+  function renderProtein(){
+    var t=protTarget(),ate=S.protein[today()]||0;
+    $('pr-target').innerHTML='Target: <b>'+t+'g</b> (1,6 × BB)';
+    $('pr-today').textContent=ate+'g hari ini • sisa '+Math.max(t-ate,0)+'g';
+    $('pr-bar').style.width=Math.min(ate/t*100,100)+'%';
+  }
+  $('pr-bb').addEventListener('input',renderProtein);
+  $('pr-add').addEventListener('click',function(){
+    var g=parseFloat($('pr-g').value)||0;if(g<=0)return;
+    var t=today();S.protein[t]=(S.protein[t]||0)+g;store.save(S);renderProtein();
+  });
+  $('rd-go').addEventListener('click',function(){
+    var s=parseInt($('rd-t').value)+(6-parseInt($('rd-n').value))+parseInt($('rd-e').value);
+    S.ready.push({d:today(),s:s});store.save(S);
+    var msg=s>=12?'GAS: target RPE 8–9 hari ini.':(s>=8?'SEDANG: main di RPE 6–7, jaga teknik.':'REST: tidur & makan dulu, gym besok.');
+    $('rd-out').innerHTML='Skor: <b>'+s+'/15</b>: '+msg;
+  });
+  // ---- LARI ----
+  $('hr-go').addEventListener('click',function(){
+    var mx=parseFloat($('hr-max').value)||190,rs=parseFloat($('hr-rest').value)||60,rv=mx-rs;
+    var z=[['Z1 Recovery','50–60'],['Z2 Aerobik','60–70'],['Z3 Tempo','70–80'],['Z4 Threshold','80–90'],['Z5 Maksimal','90–100']];
+    $('hr-out').innerHTML='<table class="plan"><tr><th>ZONA</th><th>RANGE BPM</th></tr>'+z.map(function(q){
+      var lo=Math.round(rs+rv*parseInt(q[1].slice(0,2))/100),hi=Math.round(rs+rv*parseInt(q[1].slice(3))/100);
+      return '<tr><td><b>'+q[0]+'</b></td><td style="font-family:monospace">'+lo+'–'+hi+'</td></tr>';}).join('')+'</table>';
+  });
+  function parseT(s){var p=String(s).split(':');if(p.length===2)return parseInt(p[0])*60+parseFloat(p[1]);return parseFloat(s)*60||0;}
+  function fmtP(sec){var m=Math.floor(sec/60),s=Math.round(sec%60);return m+':'+String(s).padStart(2,'0');}
+  $('pc-go').addEventListener('click',function(){
+    var d=parseFloat($('pc-d').value)||0,t=parseT($('pc-t').value);
+    if(d<=0||t<=0)return;
+    $('pc-out').innerHTML='Pace: <b>'+fmtP(t/d)+'/km</b> ('+(d/(t/3600)).toFixed(1)+' km/jam)';
+  });
+  $('pc-go2').addEventListener('click',function(){
+    var p=parseT($('pc-p').value),d=parseFloat($('pc-d2').value)||0;
+    if(p<=0||d<=0)return;
+    var t=p*d;$('pc-out2').innerHTML='Finish: <b>'+fmtP(t)+'</b> untuk '+d+'km @ '+fmtP(p)+'/km';
+  });
+  // ---- WARM-UP ----
+  var WU={
+    squat:[['Bodyweight Squat ×15',45],['Walking Lunge ×10/sisi',60],['Glute Bridge ×15',45],['Ankle Rock ×10/sisi',45],['Leg Swing ×10/sisi',45],['Goblet Squat ringan ×10',60]],
+    bench:[['Push-up Incline ×10',45],['Band Pull-apart ×15',45],['Scap Push-up ×10',45],['Arm Circle ×10',30],['Wall Slide ×10',45],['Plank 30 dtk',30]],
+    deadlift:[['Good Morning PVC ×12',45],['Glute Bridge ×15',45],['Bird Dog ×8/sisi',60],['Cat-Cow ×8',45],['RDL ringan ×10',60],['Farmer Carry 30 dtk',30]],
+    general:[['Jumping Jack 30 dtk',30],['Skipping 1 mnt',60],['Dead Hang 20 dtk',20],['World Stretch ×5/sisi',60],['Bear Crawl 20 m',45],['Inchworm ×6',45]]
+  };
+  $('wu-go').addEventListener('click',function(){
+    var bank=(WU[$('wu-f').value]||WU.general).slice().sort(function(){return Math.random()-0.5;}).slice(0,5);
+    bank.push(WU.general.slice().sort(function(){return Math.random()-0.5;})[0]);
+    var tot=bank.reduce(function(a,b){return a+b[1];},0);
+    $('wu-out').innerHTML=bank.map(function(b,i){return '<div class="logrow"><span>'+(i+1)+'. '+b[0]+'</span><small>'+b[1]+' dtk</small></div>';}).join('')+
+      '<div class="result">Total ±<b>'+Math.round(tot/60)+' mnt</b>: gas setelah ini.</div>';
+  });
+  refreshLogger();
+})();
+</script>
+</Layout>

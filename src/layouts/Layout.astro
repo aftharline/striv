@@ -1,12 +1,14 @@
 ---
 import Icon from '../components/Icon.astro';
-const { title = "STRIV: Train Better. Progress Together.", description = "STRIV — komunitas edu-social fitness Surabaya. Strength, Technique, Resistance, Intensity, Vitality.", active = "" } = Astro.props;
+import { ViewTransitions } from 'astro:transitions';
+const { title = "STRIV: Train Better. Progress Together.", description = "STRIV: komunitas edu-social fitness Surabaya. Strength, Technique, Resistance, Intensity, Vitality.", active = "" } = Astro.props;
 const wa = (text: string) => `https://wa.me/6285707109853?text=${encodeURIComponent(text)}`;
 const WA_GENERAL = wa("Halo STRIV, saya siap memulai program coaching. Bisa bantu analisis target saya?");
 const links = [
   { href: "/", label: "BERANDA", key: "home" },
   { href: "/community", label: "KOMUNITAS", key: "community" },
   { href: "/lab", label: "STRIV LAB", key: "lab" },
+  { href: "/tools", label: "TOOLS", key: "tools" },
   { href: "/coaching", label: "COACHING", key: "coaching" },
   { href: "/store", label: "STORE", key: "store" },
   { href: "/about", label: "TENTANG", key: "about" },
@@ -21,6 +23,12 @@ const links = [
 <meta name="description" content={description} />
 <link rel="icon" href="/symbol_logo.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="/symbol_logo.svg" />
+<link rel="apple-touch-icon" sizes="192x192" href="/icon-192.png" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="STRIV" />
 <meta name="theme-color" content="#101010" />
 <meta property="og:site_name" content="STRIV" />
 <meta property="og:title" content={title} />
@@ -29,6 +37,7 @@ const links = [
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<ViewTransitions />
 <!-- Ganti ID berikut untuk analytics: Google Analytics / Meta Pixel -->
 <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script> -->
 <style is:global>
@@ -59,17 +68,25 @@ header.site{position:sticky;top:0;z-index:40;background:rgba(16,16,16,.88);backd
 .nav{display:flex;align-items:center;justify-content:space-between;height:4.25rem;gap:1rem}
 .logo{display:inline-flex;align-items:center;text-decoration:none}
 .logo img{display:block;height:30px;width:auto}
+.logo-cycle{display:grid;width:120px}
+.logo-cycle img{grid-area:1/1}
+.logo-cycle .logo-mark{justify-self:center;height:30px;width:30px;opacity:0;animation:logoSwap 8s ease-in-out infinite;animation-delay:-4s}
+.logo-cycle .logo-full{animation:logoSwap 8s ease-in-out infinite}
+@keyframes logoSwap{0%,42%{opacity:1}50%,92%{opacity:0}100%{opacity:1}}
 .nav-links{display:none;gap:.25rem;background:#141414;border:1px solid var(--line);border-radius:999px;padding:.3rem;font-size:12px}
-.nav-links a{text-decoration:none;color:var(--muted);padding:.45rem .9rem;border-radius:999px}
+.nav-links a{text-decoration:none;color:var(--muted);padding:.45rem .9rem;border-radius:999px;white-space:nowrap}
 .nav-links a:hover{color:#fff;background:rgba(255,255,255,.06)}
 .nav-links a[aria-current="page"]{color:#fff;background:rgba(183,240,0,.14)}
 @media(min-width:1024px){.nav-links{display:flex}}
 .nav-mobile{display:flex;gap:.4rem;overflow-x:auto;padding:.5rem 1rem;border-top:1px solid var(--line);scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .nav-mobile::-webkit-scrollbar{display:none}
-.nav-mobile a{flex:none;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:.4rem .85rem}
+.nav-mobile a{flex:none;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:.4rem .85rem;white-space:nowrap}
 .nav-mobile a[aria-current="page"]{color:var(--lime);border-color:rgba(183,240,0,.4);background:rgba(183,240,0,.08)}
 @media(min-width:1024px){.nav-mobile{display:none}}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;text-decoration:none;font-weight:700;border-radius:var(--r);padding:.7rem 1.25rem;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;border:1px solid transparent;cursor:pointer;transition:transform .15s,background .15s}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;text-decoration:none;font-weight:700;border-radius:var(--r);padding:.7rem 1.25rem;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase;border:1px solid transparent;cursor:pointer;transition:transform .15s,background .15s;white-space:nowrap}
+.nav .btn{flex:none}
+.btn .short{display:none}
+@media(max-width:768px){.nav .btn .full{display:none}.nav .btn .short{display:inline}.nav .btn{padding:.55rem .7rem;font-size:.75rem}}
 .btn:active{transform:scale(.98)}
 .btn-lime{background:var(--lime);color:#101010}
 .btn-lime:hover{background:var(--lime-d)}
@@ -84,6 +101,18 @@ header.site{position:sticky;top:0;z-index:40;background:rgba(16,16,16,.88);backd
 .hero p{color:var(--muted);max-width:38rem;margin:1rem auto 1.75rem;font-size:1rem}
 @media(min-width:768px){.hero{padding:4.5rem 0 5rem}.hero h1{font-size:4.25rem}.hero p{font-size:1.15rem}}
 .hero-mark{width:64px;height:64px;margin:0 auto 1.25rem;display:block;position:relative;z-index:1}
+.hero-slides{position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none}
+.hero-slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0}
+.hero-slides::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.8),rgba(10,10,10,.62) 55%,var(--bg) 100%)}
+.hero>.wrap{position:relative;z-index:1}
+.slides-1 img{opacity:1}
+.slides-2 img{animation:heroFade2 12s ease-in-out infinite}
+.slides-2 img:nth-child(2){animation-delay:-6s}
+.slides-3 img{animation:heroFade3 18s ease-in-out infinite}
+.slides-3 img:nth-child(2){animation-delay:-6s}
+.slides-3 img:nth-child(3){animation-delay:-12s}
+@keyframes heroFade2{0%,40%{opacity:1}50%,90%{opacity:0}100%{opacity:1}}
+@keyframes heroFade3{0%,28%{opacity:1}36%,92%{opacity:0}100%{opacity:1}}
 .cta-row{display:flex;flex-direction:column;gap:.75rem;margin-bottom:2.5rem}
 @media(min-width:640px){.cta-row{flex-direction:row;justify-content:center}.cta-row .btn{padding:1rem 1.75rem}}
 /* telemetry mock */
@@ -249,7 +278,7 @@ img{max-width:100%;height:auto}
 @media(max-width:480px){.frame-bar{font-size:9px}.frame-bar .fb-long{display:none}}
 @media(max-width:380px){.hero h1{font-size:2rem}.hero p{font-size:.95rem}.tele{padding:.75rem;gap:.6rem}.tele b{font-size:.8rem}.proof{font-size:11px;gap:.4rem 1.25rem}}
 @media(max-width:400px){.logo img{height:26px}.btn-sm{padding:.55rem .8rem;font-size:.75rem}.ribbon{font-size:9px;letter-spacing:.06em}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero h1,.hero .wrap>p,.hero .cta-row,.hero .frame,.hero .proof{animation:none}.rv{opacity:1;transform:none;transition:none}.draw-line{stroke-dashoffset:0}.draw-line.drawn{transition:none}.spanel,.sdot,.sstep{transition:none}.card:hover,.step:hover,.mini:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero h1,.hero .wrap>p,.hero .cta-row,.hero .frame,.hero .proof{animation:none}.rv{opacity:1;transform:none;transition:none}.draw-line{stroke-dashoffset:0}.draw-line.drawn{transition:none}.spanel,.sdot,.sstep{transition:none}.card:hover,.step:hover,.mini:hover{transform:none}.logo-cycle img{animation:none}.logo-cycle .logo-mark{opacity:0}.hero-slides img{animation:none!important}.hero-slides img:first-child{opacity:1}}
 /* transparency */
 .trans{max-width:56rem;margin:0 auto;background:#121419;border:1px solid var(--line);border-radius:24px;padding:2rem;position:relative;overflow:hidden}
 @media(min-width:768px){.trans{padding:3rem}}
@@ -308,6 +337,16 @@ details p{margin-top:.75rem;color:var(--muted);font-size:.88rem}
 .vempty{text-align:center;border:1px dashed var(--line2);border-radius:var(--r-lg);padding:2rem 1rem;margin-top:1rem;color:var(--muted)}
 .vempty .btn{margin-top:1rem}
 .mini[hidden]{display:none}
+.subnav{position:sticky;top:4.25rem;z-index:25;background:rgba(16,16,16,.94);backdrop-filter:blur(14px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+@media(max-width:1023px){.subnav{position:static}}
+.subnav-in{max-width:var(--max);margin:0 auto;padding:.55rem 1rem;display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center}
+.subnav-in a{flex:none;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:.4rem .85rem;font-family:monospace;text-transform:uppercase;white-space:nowrap}
+.subnav-in a:hover{color:#fff;border-color:var(--line2)}
+main:has(> .subnav) section[id]{scroll-margin-top:8rem}
+main:has(> .subnav) .vtoolbar{top:7.3rem}
+.secnav{display:flex;justify-content:space-between;gap:.6rem;margin-top:2rem;flex-wrap:wrap}
+.secnav .btn{white-space:nowrap}
+@media(max-width:560px){.secnav .btn{flex:1 1 100%}}
 /* popup master book */
 .bookdlg{position:fixed;inset:0;margin:auto;border:1px solid var(--line2);border-radius:var(--r-lg);background:#141414;color:var(--ink);padding:0;width:min(26rem,calc(100vw - 2rem));height:fit-content;max-width:min(26rem,calc(100vw - 2rem));max-height:calc(100vh - 4rem);overflow:auto}
 .bookdlg::backdrop{background:rgba(0,0,0,.7);backdrop-filter:blur(4px)}
@@ -335,12 +374,13 @@ footer{background:#08090b;border-top:1px solid var(--line);padding:3rem 0 2rem;c
   <div class="tick-right">SURABAYA • SIDOARJO • GRESIK</div>
 </div></div>
 
-<header class="site"><div class="wrap nav">
-  <a class="logo" href="/" aria-label="STRIV"><img src="/text_logo.svg" alt="STRIV" width="120" height="30" fetchpriority="high" /></a>
+<header class="site" transition:persist><div class="wrap nav">
+  <a class="logo logo-cycle" href="/" aria-label="STRIV"><img class="logo-full" src="/text_logo.svg" alt="STRIV" width="120" height="30" fetchpriority="high" /><img class="logo-mark" src="/symbol_logo.svg" alt="" aria-hidden="true" width="30" height="30" fetchpriority="high" /></a>
   <nav class="nav-links" aria-label="Navigasi">
     {links.map((l) => <a href={l.href} aria-current={active === l.key ? "page" : undefined}>{l.label}</a>)}
   </nav>
-  <a class="btn btn-lime btn-sm" href={WA_GENERAL} target="_blank" rel="noopener"><Icon name="message-circle" size={15} /> Konsultasi WA</a>
+  <a class="btn btn-lime btn-sm" href={WA_GENERAL} target="_blank" rel="noopener"><Icon name="message-circle" size={15} /> <span class="full">Konsultasi WA</span><span class="short">WA</span></a>
+  <button type="button" class="btn btn-ghost btn-sm" id="installBtn" hidden><Icon name="download" size={15} /> <span class="full">Install App</span><span class="short">Install</span></button>
 </div>
 <nav class="nav-mobile" aria-label="Navigasi seluler">
   {links.map((l) => <a href={l.href} aria-current={active === l.key ? "page" : undefined}>{l.label}</a>)}
@@ -350,6 +390,17 @@ footer{background:#08090b;border-top:1px solid var(--line);padding:3rem 0 2rem;c
 <main id="top">
 <slot />
 </main>
+
+<dialog class="bookdlg" id="installdlg" aria-labelledby="installdlg-title">
+  <div class="dlg-in">
+    <button type="button" class="dlg-x" data-install-close aria-label="Tutup">×</button>
+    <img src="/symbol_logo.svg" alt="STRIV" width="40" height="40" loading="lazy" style="margin:0 auto;display:block" />
+    <h3 id="installdlg-title">Install STRIV di HP</h3>
+    <p>iPhone/iPad: ketuk <b>Share</b> → <b>Add to Home Screen</b>. Android: menu ⋮ → <b>Install app / Add to Home screen</b>.</p>
+    <button type="button" class="btn btn-lime" data-install-close>Mengerti</button>
+    <div class="micro">GRATIS • OFFLINE-READY • TANPA PLAY STORE</div>
+  </div>
+</dialog>
 
 <footer><div class="wrap">
   <div class="fgrid">
@@ -391,7 +442,8 @@ footer{background:#08090b;border-top:1px solid var(--line);padding:3rem 0 2rem;c
     els.forEach(function(el){ el.classList.add('on'); });
     var l = document.querySelector('.draw-line'); if(l){ l.classList.add('drawn'); }
   }
-  // facade video: klik thumbnail -> muat iframe youtube-nocookie
+  // facade video: klik thumbnail -> muat iframe youtube-nocookie (sekali saja, survive swap)
+  if(!window.__strivFacade){window.__strivFacade=true;
   document.addEventListener('click',function(e){
     var a=e.target&&e.target.closest?e.target.closest('.vid a'):null;
     if(!a)return;
@@ -401,6 +453,7 @@ footer{background:#08090b;border-top:1px solid var(--line);padding:3rem 0 2rem;c
     var id=box.getAttribute('data-yt');
     box.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0" title="Video tutorial YouTube" allow="accelerometer;autoplay;encrypted-media;picture-in-picture" allowfullscreen></iframe>';
   });
+  }
   // filter video: search + kategori + bahasa
   (function(){
     var bar=document.getElementById('vtoolbar');
@@ -430,6 +483,7 @@ footer{background:#08090b;border-top:1px solid var(--line);padding:3rem 0 2rem;c
     bar.querySelectorAll('.vpill[data-flang]').forEach(function(p){p.addEventListener('click',function(){flang=p.getAttribute('data-flang');bar.querySelectorAll('.vpill[data-flang]').forEach(function(x){x.classList.toggle('on',x===p);});apply();});});
     document.getElementById('vreset').addEventListener('click',reset);
     apply();
+  })();
   // popup master book
   (function(){
     var dlg=document.getElementById('bookdlg');
@@ -438,7 +492,48 @@ footer{background:#08090b;border-top:1px solid var(--line);padding:3rem 0 2rem;c
     dlg.querySelectorAll('[data-book-close]').forEach(function(b){b.addEventListener('click',function(){dlg.close();});});
     dlg.addEventListener('click',function(e){if(e.target===dlg)dlg.close();});
   })();
-})();
+  // PWA: register SW + install button (muncul otomatis saat browser ready; sekali saja)
+  (function(){
+    if(window.__strivPWA)return; window.__strivPWA=true;
+    if('serviceWorker' in navigator && (location.protocol==='https:'||location.hostname==='localhost')){
+      navigator.serviceWorker.register('/sw.js').catch(function(){});
+    }
+    var btn=document.getElementById('installBtn'),deferred=null;
+    if(!btn)return;
+    function showDlg(){ var d=document.getElementById('installdlg'); if(d&&d.showModal)d.showModal(); }
+    document.addEventListener('click',function(e){
+      var c=e.target&&e.target.closest?e.target.closest('[data-install-close]'):null;
+      var d=document.getElementById('installdlg');
+      if(c&&d){d.close();return;}
+      if(e.target===d)d.close();
+    });
+    var ios=/iphone|ipad|ipod/i.test(navigator.userAgent)&&!(window).MSStream;
+    var standalone=window.matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+    if(standalone)return;
+    window.addEventListener('beforeinstallprompt',function(e){
+      e.preventDefault();deferred=e;btn.hidden=false;
+    });
+    btn.addEventListener('click',function(){
+      if(deferred){deferred.prompt();deferred.userChoice.then(function(){deferred=null;btn.hidden=true;});}
+      else showDlg();
+    });
+    if(ios){btn.hidden=false;}
+  })();
+  // SPA: sinkron nav aktif (sekali saja, survive swap)
+  if(!window.__strivOnce){window.__strivOnce=true;
+    (function(){
+      function syncNav(){
+        var p=location.pathname.replace(/\/$/,'')||'/';
+        document.querySelectorAll('.nav-links a,.nav-mobile a').forEach(function(a){
+          var h=a.getAttribute('href');
+          if(h===p||(h!=='/'&&p.indexOf(h)===0))a.setAttribute('aria-current','page');
+          else a.removeAttribute('aria-current');
+        });
+      }
+      syncNav();
+      document.addEventListener('astro:after-swap',syncNav);
+    })();
+  }
 })();
 </script>
 </body>

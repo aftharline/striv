@@ -2,18 +2,21 @@
 import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 ---
-<Layout active="lab" title="STRIV Lab — Pustaka Edukasi Gratis." description="Movement database, artikel edukasi science-based, dan template workout gratis dari STRIV Surabaya.">
+<Layout active="lab" title="STRIV Lab: Pustaka Edukasi Gratis." description="Movement database, artikel edukasi science-based, dan template workout gratis dari STRIV Surabaya.">
 
-<section class="hero"><div class="wrap">
+<section class="hero"><div class="hero-slides slides-2" aria-hidden="true"><img src="/hero-lab-1.webp" alt="" fetchpriority="high" /><img src="/hero-lab-2.webp" alt="" loading="lazy" /></div><div class="wrap">
   <img class="hero-mark" src="/symbol_logo.svg" alt="STRIV" width="64" height="64" fetchpriority="high" />
   <span class="eyebrow">[STRIV LAB] | REAL SCIENCE, GRATIS</span>
   <h1>Belajar Dulu.<br /><em>Baru Angkat.</em></h1>
   <p>Pustaka edukasi terstruktur: video teknik gerakan fundamental, artikel pematah mitos, dan template siap pakai. Semua gratis.</p>
   <div class="cta-row">
     <a class="btn btn-lime" href="#movement">Movement Database <Icon name="arrow-right" size={16} /></a>
+    <a class="btn btn-ghost" href="#metode"><Icon name="chart-line" size={16} /> Metode Latihan</a>
     <a class="btn btn-ghost" href="#download"><Icon name="clipboard-check" size={16} /> Download Template</a>
   </div>
 </div></section>
+
+<nav class="subnav" aria-label="Navigasi halaman Lab"><div class="subnav-in"><a href="#top">Atas</a><a href="#masterbook">Master Book</a><a href="#data">Data</a><a href="#movement">Movement</a><a href="#metode">Metode</a><a href="#blog">Artikel</a><a href="#download">Download</a></div></nav>
 
 <!-- MASTER BOOK -->
 <section id="masterbook" style="padding-top:0"><div class="wrap">
@@ -21,12 +24,13 @@ import Icon from '../components/Icon.astro';
     <img src="/symbol_logo.svg" alt="STRIV" width="44" height="44" loading="lazy" style="margin:0 auto 1rem;display:block" />
     <span class="eyebrow">[STRIV MASTER BOOK // EDISI PUBLIK // COMING SOON]</span>
     <h2 class="sec-title">Semua Ilmu Lab, dalam 1 Buku.</h2>
-    <p>34 video + 50 artikel + 18 jurnal diringkas jadi e-book publik siap jual. Dapatkan akses pertama saat rilis.</p>
+    <p>45 video + 66 artikel + 18 jurnal diringkas jadi e-book publik siap jual. Dapatkan akses pertama saat rilis.</p>
     <div class="cta-row" style="margin-bottom:0">
       <button type="button" class="btn btn-lime" data-book-open>Dapatkan Master Book <Icon name="arrow-right" size={16} /></button>
     </div>
     <div class="micro">[EDISI PUBLIK • GRATIS PREVIEW SAAT RILIS]</div>
   </div>
+  <div class="secnav"><a class="btn btn-ghost btn-sm" href="#top">← Atas</a><a class="btn btn-ghost btn-sm" href="#data">Data →</a></div>
 </div></section>
 
 <dialog class="bookdlg" id="bookdlg" aria-labelledby="bookdlg-title">
@@ -34,7 +38,7 @@ import Icon from '../components/Icon.astro';
     <button type="button" class="dlg-x" data-book-close aria-label="Tutup">×</button>
     <img src="/symbol_logo.svg" alt="STRIV" width="40" height="40" loading="lazy" style="margin:0 auto;display:block" />
     <h3 id="bookdlg-title">Dapatkan Master Book</h3>
-    <p>E-book <b>Edisi Publik</b> untuk semua level — bukunya sama, pendampingannya yang beda.</p>
+    <p>E-book <b>Edisi Publik</b> untuk semua level, bukunya sama, pendampingannya yang beda.</p>
     <a class="btn btn-lime" href="/coaching"><Icon name="dumbbell" size={16} /> Gabung Coaching</a>
     <button type="button" class="btn btn-ghost" disabled style="opacity:.55;cursor:not-allowed">[COMING SOON] Beli E-Book Publik</button>
     <div class="micro">EDISI PUBLIK • E-BOOK TERPISAH SEGERA HADIR</div>
@@ -45,7 +49,7 @@ import Icon from '../components/Icon.astro';
 <section id="data" style="padding-top:2.5rem"><div class="wrap">
   <div class="center"><span class="eyebrow">[DATA BERBICARA]</span>
     <h2 class="sec-title">Angka Tidak Berbohong.</h2>
-    <p class="sec-sub">Scroll pelan-pelan. Empat temuan riset yang jadi alasan STRIV ada — semua dengan sumber resmi.</p>
+    <p class="sec-sub">Scroll pelan-pelan. Empat temuan riset yang jadi alasan STRIV ada, semua dengan sumber resmi.</p>
   </div>
   <div class="story">
     <figure class="story-visual" data-active="0" style="margin:0">
@@ -62,19 +66,20 @@ import Icon from '../components/Icon.astro';
       <article class="sstep" data-s="3"><span class="stag">[TEMUAN 04]</span><h3>Didampingi coach hasilnya lebih besar.</h3><p>Meta-analisis: latihan dengan supervisi menghasilkan kenaikan kekuatan lebih besar dibanding latihan mandiri. Mayoritas cedera bermula dari teknik yang buruk dan tanpa pendampingan yang qualified.</p><a class="src" href="https://journal.iusca.org/index.php/Journal/article/view/101" target="_blank" rel="noopener">Fisher et al. 2022, IUSCA ↗</a> <a class="src" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3483033/" target="_blank" rel="noopener">Faigenbaum, PMC ↗</a></article>
     </div>
   </div>
+  <div class="secnav"><a class="btn btn-ghost btn-sm" href="#masterbook">← Master Book</a><a class="btn btn-ghost btn-sm" href="#movement">Movement →</a></div>
 </div></section>
 
 <!-- MOVEMENT DATABASE -->
 <section id="movement"><div class="wrap">
-  <div class="center"><span class="eyebrow">[MOVEMENT DATABASE // 34 VIDEO]</span>
+  <div class="center"><span class="eyebrow">[MOVEMENT DATABASE // 45 VIDEO]</span>
     <h2 class="sec-title">Tonton. Tiru. Kuasai.</h2>
-    <p class="sec-sub">Tutorial internasional + lokal dari coach &amp; channel kredibel — klik untuk putar. Kredit penuh ke pembuatnya.</p>
+    <p class="sec-sub">Tutorial internasional + lokal dari coach &amp; channel kredibel, klik untuk putar. Kredit penuh ke pembuatnya.</p>
   </div>
 </div>
 <div class="vtoolbar" id="vtoolbar"><div class="vbar-in">
     <input type="search" id="vsearch" placeholder="Cari video… (mis. squat, protein, Ade Rai)" aria-label="Cari video" autocomplete="off" />
     <div class="vpills" role="group" aria-label="Filter kategori">
-      <button type="button" class="vpill on" data-fcat="all">Semua</button><button type="button" class="vpill" data-fcat="squat">Squat</button><button type="button" class="vpill" data-fcat="deadlift">Deadlift</button><button type="button" class="vpill" data-fcat="bench">Bench</button><button type="button" class="vpill" data-fcat="presspull">Press &amp; Pull</button><button type="button" class="vpill" data-fcat="hinge">Hinge &amp; Glute</button><button type="button" class="vpill" data-fcat="bodyweight">Bodyweight</button><button type="button" class="vpill" data-fcat="lokal">Lokal ID</button>
+      <button type="button" class="vpill on" data-fcat="all">Semua</button><button type="button" class="vpill" data-fcat="squat">Squat</button><button type="button" class="vpill" data-fcat="deadlift">Deadlift</button><button type="button" class="vpill" data-fcat="bench">Bench</button><button type="button" class="vpill" data-fcat="presspull">Press &amp; Pull</button><button type="button" class="vpill" data-fcat="hinge">Hinge &amp; Glute</button><button type="button" class="vpill" data-fcat="bodyweight">Bodyweight</button><button type="button" class="vpill" data-fcat="wanita">Wanita</button><button type="button" class="vpill" data-fcat="anak">Anak</button><button type="button" class="vpill" data-fcat="lansia">Lansia</button><button type="button" class="vpill" data-fcat="lokal">Lokal ID</button>
     </div>
     <div class="vpills" role="group" aria-label="Filter bahasa">
       <button type="button" class="vpill on" data-flang="all">Semua Bahasa</button><button type="button" class="vpill" data-flang="id">Indonesia</button><button type="button" class="vpill" data-flang="en">English</button>
@@ -178,7 +183,7 @@ import Icon from '../components/Icon.astro';
   </div>
   <div class="mini-head"><span class="eyebrow">[LOKAL // TEKNIK &amp; PROGRAM]</span>
     <h3>Belajar dari Ade Rai.</h3>
-    <p>Video Bahasa Indonesia dari channel Dunia Ade Rai — legenda binaraga Indonesia.</p>
+    <p>Video Bahasa Indonesia dari channel Dunia Ade Rai, legenda binaraga Indonesia.</p>
   </div>
   <div class="mini-grid">
     <div class="mini" data-cat="lokal" data-lang="id">
@@ -264,20 +269,154 @@ import Icon from '../components/Icon.astro';
       <h4>Melatih Kekuatan Otot Jantung</h4><p class="vid-credit"><b>[Dunia Ade Rai]</b> • Jantung</p>
       <p>Cardio untuk kesehatan jantung.</p></div>
   </div>
+  <div class="mini-head"><span class="eyebrow">[WANITA // 4 VIDEO]</span>
+    <h3>Kuat untuk Perempuan.</h3>
+    <p>Barbell untuk semua: squat aman, glute, pelvic floor, hingga panduan hamil, oleh coach &amp; DPT kredibel.</p>
+  </div>
+  <div class="mini-grid">
+    <div class="mini" data-cat="wanita" data-lang="en">
+      <div class="vid" data-yt="irA7MTz96ho"><a href="https://www.youtube.com/watch?v=irA7MTz96ho" target="_blank" rel="noopener" aria-label="Putar: Beginner's Guide to Back Squats"><img src="https://i.ytimg.com/vi/irA7MTz96ho/hqdefault.jpg" alt="Beginner's Guide to Back Squats" loading="lazy" width="480" height="360" /><span class="play" aria-hidden="true"></span></a></div>
+      <h4>BEGINNER'S GUIDE TO BACK SQUATS</h4><p class="vid-credit"><b>[Kelly Matthews]</b> • Squat aman perempuan</p>
+      <p>Alas kaki, stance, bar position, dan cue powerlifting.</p></div>
+    <div class="mini" data-cat="wanita" data-lang="en">
+      <div class="vid" data-yt="oGFmeKD5z-E"><a href="https://www.youtube.com/watch?v=oGFmeKD5z-E" target="_blank" rel="noopener" aria-label="Putar: How To Grow Your Glutes"><img src="https://i.ytimg.com/vi/oGFmeKD5z-E/hqdefault.jpg" alt="How To Grow Your Glutes" loading="lazy" width="480" height="360" /><span class="play" aria-hidden="true"></span></a></div>
+      <h4>How To Grow Your Glutes (5 BEST Exercises)</h4><p class="vid-credit"><b>[E3 Rehab]</b> • Glute science</p>
+      <p>Anatomi, kesalahan umum &amp; programming oleh DPT.</p></div>
+    <div class="mini" data-cat="wanita" data-lang="en">
+      <div class="vid" data-yt="kubALadx_AM"><a href="https://www.youtube.com/watch?v=kubALadx_AM" target="_blank" rel="noopener" aria-label="Putar: Best Pelvic Floor Exercises"><img src="https://i.ytimg.com/vi/kubALadx_AM/hqdefault.jpg" alt="Best Pelvic Floor Exercises" loading="lazy" width="480" height="360" /><span class="play" aria-hidden="true"></span></a></div>
+      <h4>BEST Pelvic Floor Exercises</h4><p class="vid-credit"><b>[E3 Rehab]</b> • Lebih dari Kegel</p>
+      <p>Stabilitas panggul &amp; pinggul dari dokter fisioterapi.</p></div>
+    <div class="mini" data-cat="wanita" data-lang="en">
+      <div class="vid" data-yt="pM_TPOOSfxg"><a href="https://www.youtube.com/watch?v=pM_TPOOSfxg" target="_blank" rel="noopener" aria-label="Putar: Best Exercises during Pregnancy"><img src="https://i.ytimg.com/vi/pM_TPOOSfxg/hqdefault.jpg" alt="Best Exercises during Pregnancy" loading="lazy" width="480" height="360" /><span class="play" aria-hidden="true"></span></a></div>
+      <h4>Best Exercises during Pregnancy</h4><p class="vid-credit"><b>[Pregnancy Workout]</b> • Aman &amp; konsisten</p>
+      <p>Ringan dan rutin. Konsultasi dokter dulu.</p></div>
+  </div>
+  <div class="mini-head"><span class="eyebrow">[ANAK &amp; REMAJA // 3 VIDEO]</span>
+    <h3>Fondasi Gerak Sejak Muda.</h3>
+    <p>Bodyweight progresif dengan supervisi orang tua/pelatih: teknik dulu, beban kemudian.</p>
+  </div>
+  <div class="mini-grid">
+    <div class="mini" data-cat="anak" data-lang="en">
+      <div class="vid" data-yt="Sr0nmKRS1zI"><a href="https://www.youtube.com/watch?v=Sr0nmKRS1zI" target="_blank" rel="noopener" aria-label="Putar: Push-Ups For Complete Beginners"><img src="https://i.ytimg.com/vi/Sr0nmKRS1zI/hqdefault.jpg" alt="Push-Ups For Complete Beginners" loading="lazy" width="480" height="360" /><span class="play" aria-hidden="true"></span></a></div>
+      <h4>Push-Ups For Complete Beginners</h4><p class="vid-credit"><b>[FitnessFAQs]</b> • Progresi aman</p>
+      <p>Dari wall push-up sampai weighted. Wajib didampingi.</p></div>
+    <div class="mini" data-cat="anak" data-lang="en">
+      <div class="vid" data-yt="kIVxdIWy7Eo"><a href="https://www.youtube.com/watch?v=kIVxdIWy7Eo" target="_blank" rel="noopener" aria-label="Putar: Start Calisthenics with This Workout"><img src="https://i.ytimg.com/vi/kIVxdIWy7Eo/hqdefault.jpg" alt="Start Calisthenics with This Workout" loading="lazy" width="480" height="360" /><span class="play" aria-hidden="true"></span></a></div>
+      <h4>Start Calisthenics with This Workout</h4><p class="vid-credit"><b>[THENX]</b> • Fondasi bodyweight</p>
+      <p>Leg raise, push-up, pistol squat bertahap.</p></div>
+    <div class="mini" data-cat="anak" data-lang="en">
+      <div class="vid" data-yt="5iKEshOW6yw"><a href="https://www.youtube.com/watch?v=5iKEshOW6yw" target="_blank" rel="noopener" aria-label="Putar: Calisthenics Push Workout Beginners"><img src="https://i.ytimg.com/vi/5iKEshOW6yw/hqdefault.jpg" alt="Calisthenics Push Workout Beginners" loading="lazy" width="480" height="360" /><span class="play" aria-hidden="true"></span></a></div>
+      <h4>Calisthenics Push Workout Beginners</h4><p class="vid-credit"><b>[Calisthenics Family]</b> • Variasi mudah</p>
+      <p>15 menit follow-along, ada opsi termudah tiap gerakan.</p></div>
+  </div>
+  <div class="mini-head"><span class="eyebrow">[LANSIA // 4 VIDEO]</span>
+    <h3>Kuat di Usia Emas.</h3>
+    <p>Balance, kekuatan kursi, dan cegah jatuh oleh fisioterapis. Ajak orang tuamu bergerak.</p>
+  </div>
+  <div class="mini-grid">
+    <div class="mini" data-cat="lansia" data-lang="en">
+      <div class="vid" data-yt="BNC4bi3Ucac"><a href="https://www.youtube.com/watch?v=BNC4bi3Ucac" target="_blank" rel="noopener" aria-label="Putar: 7 Balance Exercises for Seniors"><img src="https://i.ytimg.com/vi/BNC4bi3Ucac/hqdefault.jpg" alt="7 Balance Exercises for Seniors" loading="lazy" width="480" height="360" /><span class="play" aria-hidden="true"></span></a></div>
+      <h4>7 Balance Exercises for Seniors</h4><p class="vid-credit"><b>[Bob &amp; Brad]</b> • Cegah jatuh</p>
+      <p>Dari fisioterapis: balance + turunkan risiko jatuh.</p></div>
+    <div class="mini" data-cat="lansia" data-lang="en">
+      <div class="vid" data-yt="YzuFGcIiKdw"><a href="https://www.youtube.com/watch?v=YzuFGcIiKdw" target="_blank" rel="noopener" aria-label="Putar: Most Important Exercise For Seniors"><img src="https://i.ytimg.com/vi/YzuFGcIiKdw/hqdefault.jpg" alt="Most Important Exercise For Seniors" loading="lazy" width="480" height="360" /><span class="play" aria-hidden="true"></span></a></div>
+      <h4>Most Important Exercise For Seniors</h4><p class="vid-credit"><b>[Bob &amp; Brad]</b> • Gerakan wajib</p>
+      <p>Termasuk pentingnya squat untuk lansia.</p></div>
+    <div class="mini" data-cat="lansia" data-lang="en">
+      <div class="vid" data-yt="bvAz-joCc80"><a href="https://www.youtube.com/watch?v=bvAz-joCc80" target="_blank" rel="noopener" aria-label="Putar: Strength and Balance to reduce fall risk"><img src="https://i.ytimg.com/vi/bvAz-joCc80/hqdefault.jpg" alt="Strength and Balance to reduce fall risk" loading="lazy" width="480" height="360" /><span class="play" aria-hidden="true"></span></a></div>
+      <h4>Strength &amp; Balance to REDUCE Fall Risk</h4><p class="vid-credit"><b>[Exercise for Health]</b> • Lawan atrofi</p>
+      <p>Otot menyusut karena inaktivitas. Latih kembali.</p></div>
+    <div class="mini" data-cat="lansia" data-lang="en">
+      <div class="vid" data-yt="JAO_5iiMkng"><a href="https://www.youtube.com/watch?v=JAO_5iiMkng" target="_blank" rel="noopener" aria-label="Putar: 30-Minute Full Body Chair Workout"><img src="https://i.ytimg.com/vi/JAO_5iiMkng/hqdefault.jpg" alt="30-Minute Full Body Chair Workout" loading="lazy" width="480" height="360" /><span class="play" aria-hidden="true"></span></a></div>
+      <h4>30-Min Full Body Chair Workout</h4><p class="vid-credit"><b>[VitalityFL]</b> • Kursi full-body</p>
+      <p>Duduk &amp; berdiri, level intermediate, 30 menit.</p></div>
+  </div>
+  <div class="secnav"><a class="btn btn-ghost btn-sm" href="#data">← Data</a><a class="btn btn-ghost btn-sm" href="#metode">Metode →</a></div>
+</div></section>
+
+<!-- METODE LATIHAN -->
+<section id="metode" style="background:#0a0b0c;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap">
+  <div class="center"><span class="eyebrow">[METODE LATIHAN // 12 METODE]</span>
+    <h2 class="sec-title">Pilih Senjatamu.</h2>
+    <p class="sec-sub">12 metode latihan paling populer, dijelaskan sederhana: apa itu, dosisnya, cocok untuk siapa, plus video implementasi. Bandingkan dulu di tabel, dalami di kartu.</p>
+  </div>
+  <div style="overflow-x:auto;margin-top:2rem;border:1px solid var(--line);border-radius:var(--r-lg)">
+    <table style="width:100%;border-collapse:collapse;font-size:.8rem;min-width:38rem">
+      <thead><tr style="background:#12141a;text-align:left">
+        <th style="padding:.7rem .9rem;border-bottom:1px solid var(--line2);font-family:monospace;font-size:10px;letter-spacing:.08em;color:var(--lime)">METODE</th>
+        <th style="padding:.7rem .9rem;border-bottom:1px solid var(--line2);font-family:monospace;font-size:10px;letter-spacing:.08em;color:var(--lime)">TUJUAN</th>
+        <th style="padding:.7rem .9rem;border-bottom:1px solid var(--line2);font-family:monospace;font-size:10px;letter-spacing:.08em;color:var(--lime)">DOSIS KHAS</th>
+        <th style="padding:.7rem .9rem;border-bottom:1px solid var(--line2);font-family:monospace;font-size:10px;letter-spacing:.08em;color:var(--lime)">COCOK UNTUK</th>
+      </tr></thead>
+      <tbody style="color:#d4d4d4">
+        <tr><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)"><b>Hipertrofi</b></td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)">Otot besar</td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line);font-family:monospace">3–4×8–12, rest ≥2 mnt</td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)">Semua level</td></tr>
+        <tr><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)"><b>Powerlifting</b></td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)">1RM SBD maksimal</td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line);font-family:monospace">3–5×1–5, rest 3–5 mnt</td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)">Intermediate+</td></tr>
+        <tr><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)"><b>Powerbuilding</b></td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)">Kuat + besar</td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line);font-family:monospace">SBD berat + aksesori 8–12</td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)">Intermediate</td></tr>
+        <tr><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)"><b>Heavy Duty / HIT</b></td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)">Stimulus maksimal, volume minimal</td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line);font-family:monospace">1×6–10 to failure, jeda 4–7 hari</td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)">Sibuk / advanced</td></tr>
+        <tr><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)"><b>Superset</b></td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)">Hemat waktu, pump</td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line);font-family:monospace">2 gerakan tanpa rest</td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)">Jadwal padat</td></tr>
+        <tr><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)"><b>HIIT</b></td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)">Jantung + bakar kalori</td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line);font-family:monospace">10–20 mnt interval</td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)">Semua (skalakan intensitas)</td></tr>
+        <tr><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)"><b>Hybrid</b></td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)">Kuat + tahan (lari &amp; angkat)</td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line);font-family:monospace">2–3 beban + 2 cardio/minggu</td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)">Target ganda</td></tr>
+        <tr><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)"><b>RPE / RIR</b></td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)">Atur intensitas harian</td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line);font-family:monospace">Target RPE 7–9 / sisa 1–3 reps</td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)">Semua (wajib paham)</td></tr>
+        <tr><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)"><b>Deload</b></td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)">Pulih, hindari overtrain</td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line);font-family:monospace">−40–60% volume tiap 4–8 minggu</td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)">Semua yang progresif</td></tr>
+        <tr><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)"><b>Rest-Pause / Myo</b></td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)">Reps efektif ekstra</td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line);font-family:monospace">1 set + mini-rest 10–20 dtk ×2–3</td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)">Intermediate, isolasi</td></tr>
+        <tr><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)"><b>Circuit / Full-Body</b></td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)">Fondasi + fat loss</td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line);font-family:monospace">6–8 pos × 40 dtk / 3× full-body</td><td style="padding:.6rem .9rem;border-bottom:1px solid var(--line)">Pemula</td></tr>
+        <tr><td style="padding:.6rem .9rem"><b>Periodisasi</b></td><td style="padding:.6rem .9rem">Progres jangka panjang</td><td style="padding:.6rem .9rem;font-family:monospace">Blok 4 minggu, +2–10% beban</td><td style="padding:.6rem .9rem">Semua yang serius</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="grid3">
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[HIPERTROFI]</span><h3><Icon name="dumbbell" size={20} /> Otot Besar.</h3>
+      <p>Beban sedang, reps 8–12, tiap set berhenti 1–3 reps sebelum gagal. Cocok semua level; jangan kejar beban sampai form rusak.</p>
+      <div class="foot"><span>3–4×8–12</span><span><a class="src" href="https://www.youtube.com/watch?v=P9glPdZDXIs" target="_blank" rel="noopener">▶ Ade Rai</a> <a class="src" href="https://doi.org/10.1080/02640414.2016.1210197" target="_blank" rel="noopener">Schoenfeld 2017 ↗</a></span></div></div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[POWERLIFTING]</span><h3><Icon name="zap" size={20} /> 1RM Tertinggi.</h3>
+      <p>Hanya 3 gerakan: squat, bench, deadlift seberat mungkin 1 reps. Teknik &amp; rest panjang wajib. Untuk intermediate+; pemula fondasi dulu.</p>
+      <div class="foot"><span>3–5×1–5</span><span><a class="src" href="https://www.youtube.com/watch?v=MBbyAqvTNkU" target="_blank" rel="noopener">▶ Thrall</a></span></div></div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[POWERBUILDING]</span><h3><Icon name="chart-line" size={20} /> Kuat + Besar.</h3>
+      <p>SBD berat di awal sesi + aksesori 8–12 reps untuk otot. Dapat dua-duanya, tapi sesi lebih lama.</p>
+      <div class="foot"><span>SBD + 8–12</span><span><a class="src" href="https://www.youtube.com/watch?v=F6epm8Yp1Wo" target="_blank" rel="noopener">▶ Ade Rai Advanced</a></span></div></div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[HEAVY DUTY / HIT]</span><h3><Icon name="zap" size={20} /> 1 Set All-Out.</h3>
+      <p>1 set sampai gagal per gerakan (ala Mike Mentzer), lalu istirahat 4–7 hari. Intensitas = persen usaha maksimal, bukan gengsi beban. Untuk jadwal sibuk/advanced, bukan pemula tanpa pendamping.</p>
+      <div class="foot"><span>1×6–10 to failure</span><span><a class="src" href="https://www.youtube.com/watch?v=DzjWEn2BS_k" target="_blank" rel="noopener">▶ Nippard: low volume</a> <a class="src" href="https://www.artofmanliness.com/health-fitness/fitness/mike-mentzer-heavy-duty" target="_blank" rel="noopener">Mentzer Guide ↗</a></span></div></div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[SUPERSET]</span><h3><Icon name="activity" size={20} /> Dua Gerakan, Nol Istirahat.</h3>
+      <p>Dua gerakan back-to-back (otot lawan atau sama). RCT 2024: hasil setara set biasa dalam waktu setengahnya. Solusi jadwal padat.</p>
+      <div class="foot"><span>back-to-back</span><span><a class="src" href="https://www.youtube.com/watch?v=spKGN0XzErU" target="_blank" rel="noopener">▶ Nippard Pull</a> <a class="src" href="https://pubmed.ncbi.nlm.nih.gov/39072654/" target="_blank" rel="noopener">Iversen 2024 ↗</a></span></div></div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[HIIT]</span><h3><Icon name="trending-up" size={20} /> Interval All-Out.</h3>
+      <p>20–30 detik gaspol + rest, total 10–20 menit. Untuk jantung &amp; bakar kalori, bukan pengganti beban. Pemula bisa mulai dari jalan cepat.</p>
+      <div class="foot"><span>10–20 mnt</span><span><a class="src" href="https://www.youtube.com/watch?v=miez9DGDZUc" target="_blank" rel="noopener">▶ Ade Rai cardio</a></span></div></div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[HYBRID]</span><h3><Icon name="activity" size={20} /> Angkat + Lari.</h3>
+      <p>Beban dan lari/sepeda dalam seminggu. Bila otot prioritas, pilih sepeda/zona 2: lari overdosis mengganggu hipertrofi. Untuk yang mau kuat sekaligus tahan.</p>
+      <div class="foot"><span>2–3 beban + 2 cardio</span><span><a class="src" href="https://www.youtube.com/watch?v=gpD6boRgXdI" target="_blank" rel="noopener">▶ Hybrid split</a> <a class="src" href="https://pubmed.ncbi.nlm.nih.gov/22002517/" target="_blank" rel="noopener">Wilson 2012 ↗</a></span></div></div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[RPE / RIR]</span><h3><Icon name="clipboard-check" size={20} /> Speedometer Intensitas.</h3>
+      <p>Bukan metode, tapi cara membaca badan: RPE 10 = gagal, RIR 3 = sisa 3 reps. Target umum RPE 7–9. Wajib dipahami semua level biar tidak over/under-train.</p>
+      <div class="foot"><span>RPE 7–9</span><span><a class="src" href="https://www.youtube.com/watch?v=IL7Ej-Ow4FM" target="_blank" rel="noopener">▶ RPE/RIR simpel</a></span></div></div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[DELOAD]</span><h3><Icon name="calendar-check" size={20} /> Minggu Ringan Terjadwal.</h3>
+      <p>Potong 40–60% volume tiap 4–8 minggu, atau saat performa turun 2 minggu. Obat overtraining, bukan kemalasan.</p>
+      <div class="foot"><span>tiap 4–8 minggu</span><span><a class="src" href="https://www.youtube.com/watch?v=Dt6ok24VBpg" target="_blank" rel="noopener">▶ RP Deload</a> <a class="src" href="https://pubmed.ncbi.nlm.nih.gov/23016079/" target="_blank" rel="noopener">Carfagno 2012 ↗</a></span></div></div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[REST-PAUSE / MYO]</span><h3><Icon name="zap" size={20} /> Set + Mini-Rest.</h3>
+      <p>Satu set, jeda 10–20 detik, lanjut reps lagi 2–3 kali. Menambah reps efektif tanpa tambah waktu. Untuk isolasi/intermediate; hindari di SBD berat.</p>
+      <div class="foot"><span>1×(12+3+3)</span><span><a class="src" href="https://www.youtube.com/watch?v=FbWfA_s0XL8" target="_blank" rel="noopener">▶ Full-body + RPE</a></span></div></div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[CIRCUIT / FULL-BODY]</span><h3><Icon name="users" size={20} /> Fondasi Pemula.</h3>
+      <p>Muter 6–8 pos atau full-body 3×/minggu. Fondasi + fat loss; pindah ke split setelah 3–6 bulan bila perlu.</p>
+      <div class="foot"><span>3×/minggu</span><span><a class="src" href="https://www.youtube.com/watch?v=rN92rbUoQDE" target="_blank" rel="noopener">▶ Program pemula</a></span></div></div>
+    <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[PERIODISASI]</span><h3><Icon name="chart-line" size={20} /> Progres Tanpa Tebakan.</h3>
+      <p>Naikkan 2–10% saat batas atas reps tercapai; susun blok 4 minggu. ACSM 2026 (30.000+ subjek): konsistensi 2×/minggu mengalahkan program "sempurna".</p>
+      <div class="foot"><span>+2–10%</span><span><a class="src" href="https://www.youtube.com/watch?v=rG7ni0fpADA" target="_blank" rel="noopener">▶ Progressive overload</a> <a class="src" href="https://acsm.org/resistance-training-guidelines-update-2026" target="_blank" rel="noopener">ACSM 2026 ↗</a></span></div></div>
+  </div>
+  <div class="secnav"><a class="btn btn-ghost btn-sm" href="#movement">← Movement</a><a class="btn btn-ghost btn-sm" href="#blog">Artikel →</a></div>
 </div></section>
 
 <!-- BLOG -->
 <section id="blog" style="background:#0a0b0c;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap">
-  <div class="center"><span class="eyebrow">[BLOG EDUKASI // 50 ARTIKEL]</span>
+  <div class="center"><span class="eyebrow">[BLOG EDUKASI // 66 ARTIKEL]</span>
     <h2 class="sec-title">Mitos Dibantah Sains.</h2>
-    <p class="sec-sub">Semua artikel merujuk jurnal atau sumber resmi — klik link di tiap kartu untuk baca sumber aslinya. Diurut terbaru dulu di tiap kategori.</p>
+    <p class="sec-sub">Semua artikel merujuk jurnal atau sumber resmi, klik link di tiap kartu untuk baca sumber aslinya. Diurut terbaru dulu di tiap kategori.</p>
   </div>
   <div class="mini-head"><span class="eyebrow">[MITOS // 6 ARTIKEL]</span>
     <h3>Yang Kamu Percaya, Salah?</h3>
   </div>
   <div class="grid3">
     <div class="card"><span class="tag red">[MITOS]</span><h3><Icon name="x" size={20} /> Spot Reduction Ternyata Ada? (dengan Syarat)</h3>
-      <p>RCT 2023: abdominal endurance + cardio (energi disamakan) → lemak trunk -7% vs treadmill saja. Syaratnya volume aerobik besar — bukan 100x crunch.</p>
+      <p>RCT 2023: abdominal endurance + cardio (energi disamakan) → lemak trunk -7% vs treadmill saja. Syaratnya volume aerobik besar, bukan 100x crunch.</p>
       <div class="foot"><span>5 mnt baca • 2023</span><span><a class="src" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10680576/" target="_blank" rel="noopener">Brobakken et al. 2023 ↗</a></span></div></div>
     <div class="card"><span class="tag red">[MITOS]</span><h3><Icon name="x" size={20} /> Telur Bikin Kolesterol Naik?</h3>
       <p>Review Nutrients: telur menaikkan HDL + partikel LDL besar (jinak); bukan driver penyakit jantung pada orang sehat. 1–3 butir/hari aman.</p>
@@ -289,7 +428,7 @@ import Icon from '../components/Icon.astro';
       <p>6 minggu sit-up saja tidak menurunkan lemak perut (RCT, 24 partisipan). Yang membakar lemak: defisit kalori + latihan beban full-body + protein cukup.</p>
       <div class="foot"><span>5 mnt baca • 2011</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/21804427/" target="_blank" rel="noopener">Vispute et al. 2011 ↗</a></span></div></div>
     <div class="card"><span class="tag red">[MITOS]</span><h3><Icon name="x" size={20} /> Anak Angkat Beban = Pendek?</h3>
-      <p>Position statement NSCA: youth resistance training yang disupervisi aman &amp; efektif, tidak menghambat pertumbuhan — justru memperkuat tulang dan tendon.</p>
+      <p>Position statement NSCA: youth resistance training yang disupervisi aman &amp; efektif, tidak menghambat pertumbuhan, justru memperkuat tulang dan tendon.</p>
       <div class="foot"><span>5 mnt baca • 2009</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/19620931/" target="_blank" rel="noopener">Faigenbaum et al. 2009 ↗</a></span></div></div>
     <div class="card"><span class="tag red">[MITOS]</span><h3><Icon name="x" size={20} /> Protein Tinggi Merusak Ginjal?</h3>
       <p>Review: pada ginjal sehat, asupan protein tinggi tidak merusak fungsi ginjal. Mitos ini berasal dari pasien gagal ginjal yang digeneralisir ke semua orang.</p>
@@ -300,7 +439,7 @@ import Icon from '../components/Icon.astro';
   </div>
   <div class="grid3">
     <div class="card"><span class="tag amber">[NUTRISI]</span><h3><Icon name="clipboard-check" size={20} /> Makanan Ultra-Proses Bikin Kalap?</h3>
-      <p>RCT rawat inap Hall: diet ultra-proses → +500 kkal/hari &amp; +0,9kg/2 minggu vs whole food, padahal kalori &amp; makro disamakan. Bukan soal niat — soal lingkungan makanan.</p>
+      <p>RCT rawat inap Hall: diet ultra-proses → +500 kkal/hari &amp; +0,9kg/2 minggu vs whole food, padahal kalori &amp; makro disamakan. Bukan soal niat, soal lingkungan makanan.</p>
       <div class="foot"><span>5 mnt baca • 2019</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/31105044/" target="_blank" rel="noopener">Hall et al. 2019 ↗</a></span></div></div>
     <div class="card"><span class="tag amber">[NUTRISI]</span><h3><Icon name="clipboard-check" size={20} /> Puasa Intermiten: Sihir atau Defisit?</h3>
       <p>Review NEJM: IF memperbaiki sensitivitas insulin &amp; tekanan darah; fat loss-nya setara defisit kalori biasa. Pilih pola makan yang bisa konsisten bertahun-tahun.</p>
@@ -318,13 +457,13 @@ import Icon from '../components/Icon.astro';
       <p>Follow-up 6 tahun Biggest Loser: adaptasi metabolik −500 kkal/hari menetap bertahun-tahun. Pelajaran: turun pelan (±0,5%/minggu), jangan crash diet.</p>
       <div class="foot"><span>5 mnt baca • 2016</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/27136388/" target="_blank" rel="noopener">Fothergill et al. 2016 ↗</a></span></div></div>
     <div class="card"><span class="tag amber">[NUTRISI]</span><h3><Icon name="clipboard-check" size={20} /> Protein untuk Umur 50+: 2x Lipat?</h3>
-      <p>PROT-AGE: lansia butuh 1,0–1,2g/kg (di atas RDA 0,8) + latihan beban melawan sarcopenia. Ajak orang tuamu latihan — belum terlambat.</p>
+      <p>PROT-AGE: lansia butuh 1,0–1,2g/kg (di atas RDA 0,8) + latihan beban melawan sarcopenia. Ajak orang tuamu latihan, belum terlambat.</p>
       <div class="foot"><span>4 mnt baca • 2013</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/23867520/" target="_blank" rel="noopener">Bauer et al. 2013 ↗</a></span></div></div>
     <div class="card"><span class="tag amber">[NUTRISI]</span><h3><Icon name="clipboard-check" size={20} /> Anabolic Window 30 Menit Pasca-Latihan?</h3>
-      <p>Meta-analisis: protein timing tidak signifikan setelah total harian disamakan. Penuhi 1,6g/kg dulu — timing hanya bonus kecil.</p>
+      <p>Meta-analisis: protein timing tidak signifikan setelah total harian disamakan. Penuhi 1,6g/kg dulu, timing hanya bonus kecil.</p>
       <div class="foot"><span>4 mnt baca • 2013</span><span><a class="src" href="https://jissn.biomedcentral.com/articles/10.1186/1550-2783-10-53" target="_blank" rel="noopener">Schoenfeld et al. 2013 ↗</a></span></div></div>
     <div class="card"><span class="tag amber">[NUTRISI]</span><h3><Icon name="clipboard-check" size={20} /> Minuman Manis vs Berat Badan?</h3>
-      <p>Meta-analisis RCT: kurangi gula → −0,8kg; tambah gula → +0,75kg. Satu gelas es teh manis ≈ 30g gula — hampir separuh batas harian.</p>
+      <p>Meta-analisis RCT: kurangi gula → −0,8kg; tambah gula → +0,75kg. Satu gelas es teh manis ≈ 30g gula, hampir separuh batas harian.</p>
       <div class="foot"><span>4 mnt baca • 2012</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/23321486/" target="_blank" rel="noopener">Te Morenga et al. 2012 ↗</a></span></div></div>
     <div class="card"><span class="tag amber">[NUTRISI]</span><h3><Icon name="clipboard-check" size={20} /> Kopi Sebelum Latihan?</h3>
       <p>ISSN position stand: 3–6mg/kg kafein ±60 menit pre-workout meningkatkan endurance &amp; power. Di atas 9mg/kg hanya menambah efek samping.</p>
@@ -338,25 +477,25 @@ import Icon from '../components/Icon.astro';
       <p>RCT 2024 whole-body multi-joint: superset = hipertrofi &amp; kekuatan setara set tradisional dalam waktu jauh lebih singkat. Solusi jadwal padat.</p>
       <div class="foot"><span>5 mnt baca • 2024</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/39072654/" target="_blank" rel="noopener">Iversen et al. 2024 ↗</a></span></div></div>
     <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[PROGRAM]</span><h3><Icon name="calendar-check" size={20} /> Gerakan Besar Dulu atau Belakangan?</h3>
-      <p>Review: urutan latihan memengaruhi kekuatan — dahulukan compound berat (squat, bench, deadlift) saat energi penuh; isolasi di akhir sesi.</p>
+      <p>Review: urutan latihan memengaruhi kekuatan: dahulukan compound berat (squat, bench, deadlift) saat energi penuh; isolasi di akhir sesi.</p>
       <div class="foot"><span>5 mnt baca • 2021</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/32077380/" target="_blank" rel="noopener">Nunes et al. 2021 ↗</a></span></div></div>
     <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[PROGRAM]</span><h3><Icon name="chart-line" size={20} /> Frekuensi untuk Kekuatan Maksimal?</h3>
       <p>Meta-analisis: frekuensi lebih tinggi unggul untuk 1RM (efek kecil). Untuk strength: tiap gerakan besar 2x+/minggu. Untuk hipertrofi: volume yang bicara.</p>
       <div class="foot"><span>5 mnt baca • 2018</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/29470825/" target="_blank" rel="noopener">Grgic et al. 2018 ↗</a></span></div></div>
     <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[PROGRAM]</span><h3><Icon name="chart-line" size={20} /> Berapa Set per Minggu Biar Otot Tumbuh?</h3>
-      <p>Meta-analisis: hubungan dose-response — tiap set mingguan ekstra ≈ +0,37% hipertrofi. Minimal 10 set/otot/minggu untuk hasil maksimal.</p>
+      <p>Meta-analisis: hubungan dose-response, tiap set mingguan ekstra ≈ +0,37% hipertrofi. Minimal 10 set/otot/minggu untuk hasil maksimal.</p>
       <div class="foot"><span>6 mnt baca • 2017</span><span><a class="src" href="https://doi.org/10.1080/02640414.2016.1210197" target="_blank" rel="noopener">Schoenfeld et al. 2017 ↗</a></span></div></div>
     <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[PROGRAM]</span><h3><Icon name="chart-line" size={20} /> Fase Turun (Eccentric) Diremehkan?</h3>
-      <p>Review: eccentric menghasilkan tensi tinggi + adaptasi tendon &amp; kekuatan unik. Kontrol tempo turun 2–3 detik — jangan jatuhkan beban.</p>
+      <p>Review: eccentric menghasilkan tensi tinggi + adaptasi tendon &amp; kekuatan unik. Kontrol tempo turun 2–3 detik. Jangan jatuhkan beban.</p>
       <div class="foot"><span>5 mnt baca • 2017</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/27647157/" target="_blank" rel="noopener">Douglas et al. 2017 ↗</a></span></div></div>
     <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[PROGRAM]</span><h3><Icon name="chart-line" size={20} /> Istirahat 1 Menit vs 3 Menit?</h3>
-      <p>Rest ≥2 menit unggul untuk kekuatan dan hipertrofi dibanding 1 menit — karena volume total yang bisa dilakukan lebih besar. Jangan buru-buru.</p>
+      <p>Rest ≥2 menit unggul untuk kekuatan dan hipertrofi dibanding 1 menit, karena volume total yang bisa dilakukan lebih besar. Jangan buru-buru.</p>
       <div class="foot"><span>4 mnt baca • 2016</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/26605807/" target="_blank" rel="noopener">Schoenfeld et al. 2016 ↗</a></span></div></div>
     <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[PROGRAM]</span><h3><Icon name="chart-line" size={20} /> Beban Ringan vs Berat: Hasil Sama?</h3>
       <p>RCT: 30–50% 1RM sampai dekat gagal = hipertrofi setara 75–90%, asal effort tinggi. Beban berat tetap unggul untuk 1RM. Entri ideal untuk pemula &amp; homegym.</p>
       <div class="foot"><span>5 mnt baca • 2016</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/27174923/" target="_blank" rel="noopener">Morton et al. 2016 ↗</a></span></div></div>
     <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[PROGRAM]</span><h3><Icon name="calendar-check" size={20} /> Latihan 2x vs 5x Seminggu?</h3>
-      <p>Meta-analisis: frekuensi 2x+/minggu per otot lebih baik — tapi efeknya kecil jika volume total disamakan. Konsistensi &gt; frekuensi ekstrem.</p>
+      <p>Meta-analisis: frekuensi 2x+/minggu per otot lebih baik, tapi efeknya kecil jika volume total disamakan. Konsistensi &gt; frekuensi ekstrem.</p>
       <div class="foot"><span>5 mnt baca • 2016</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/27102172/" target="_blank" rel="noopener">Schoenfeld et al. 2016 ↗</a></span></div></div>
     <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[PROGRAM]</span><h3><Icon name="activity" size={20} /> Cardio Bikin Otot Menyusut?</h3>
       <p>Meta-analisis 21 studi: lari + beban bisa mengganggu hipertrofi, tapi sepeda tidak. Kuncinya: modalitas, frekuensi, dan durasi cardio.</p>
@@ -373,16 +512,16 @@ import Icon from '../components/Icon.astro';
   </div>
   <div class="grid3">
     <div class="card"><span class="tag blue">[TEKNIK]</span><h3><Icon name="zap" size={20} /> Stretching Bikin Otot Tumbuh?</h3>
-      <p>Systematic review 2024: chronic static stretching memberi hipertrofi kecil-sedang + fleksibilitas. BUKAN pengganti beban — tapi pelengkap yang valid.</p>
+      <p>Systematic review 2024: chronic static stretching memberi hipertrofi kecil-sedang + fleksibilitas. BUKAN pengganti beban, tapi pelengkap yang valid.</p>
       <div class="foot"><span>5 mnt baca • 2024</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/38637473/" target="_blank" rel="noopener">Warneke et al. 2024 ↗</a></span></div></div>
     <div class="card"><span class="tag blue">[TEKNIK]</span><h3><Icon name="dumbbell" size={20} /> Squat Setengah vs Full Depth?</h3>
       <p>Systematic review: full range of motion unggul untuk hipertrofi (terutama paha depan &amp; glute). Ego pakai beban berat setengah jalan = rugi.</p>
       <div class="foot"><span>5 mnt baca • 2020</span><span><a class="src" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6977096/" target="_blank" rel="noopener">Schoenfeld &amp; Grgic 2020 ↗</a></span></div></div>
     <div class="card"><span class="tag blue">[TEKNIK]</span><h3><Icon name="zap" size={20} /> Fokus ke Otot (Mind-Muscle)?</h3>
-      <p>8 minggu latihan: fokus internal → hipertrofi lengan lebih besar; fokus eksternal → kekuatan lebih baik. Keduanya valid — sesuaikan dengan goal.</p>
+      <p>8 minggu latihan: fokus internal → hipertrofi lengan lebih besar; fokus eksternal → kekuatan lebih baik. Keduanya valid, sesuaikan dengan goal.</p>
       <div class="foot"><span>4 mnt baca • 2018</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/29533715/" target="_blank" rel="noopener">Schoenfeld et al. 2018 ↗</a></span></div></div>
     <div class="card"><span class="tag blue">[TEKNIK]</span><h3><Icon name="zap" size={20} /> Tempo Lambat = Otot Lebih Besar?</h3>
-      <p>Meta-analisis: durasi rep 0,5–8 detik hasilnya setara; di atas 10 detik inferior. Kontrol 2–4 detik cukup — jangan lebay.</p>
+      <p>Meta-analisis: durasi rep 0,5–8 detik hasilnya setara; di atas 10 detik inferior. Kontrol 2–4 detik cukup. Jangan lebay.</p>
       <div class="foot"><span>4 mnt baca • 2015</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/25601394/" target="_blank" rel="noopener">Schoenfeld et al. 2015 ↗</a></span></div></div>
     <div class="card"><span class="tag blue">[TEKNIK]</span><h3><Icon name="shield-check" size={20} /> Nahan Napas (Valsalva) Berbahaya?</h3>
       <p>Review: Valsalva menstabilkan spine via tekanan intra-abdomen; aman untuk terlatih. Hindari jika hipertensi tak terkontrol; pemula exhale di sticking point.</p>
@@ -396,13 +535,13 @@ import Icon from '../components/Icon.astro';
   </div>
   <div class="grid3">
     <div class="card"><span class="tag blue">[RECOVERY]</span><h3><Icon name="activity" size={20} /> Es Bath Menghambat Otot?</h3>
-      <p>Review: cold water immersion rutin pasca-beban menumpulkan adaptasi kekuatan &amp; hipertrofi. Pakai untuk turnamen/multi-event — bukan ritual harian.</p>
+      <p>Review: cold water immersion rutin pasca-beban menumpulkan adaptasi kekuatan &amp; hipertrofi. Pakai untuk turnamen/multi-event, bukan ritual harian.</p>
       <div class="foot"><span>5 mnt baca • 2021</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/33898988/" target="_blank" rel="noopener">Moore et al. 2021 ↗</a></span></div></div>
     <div class="card"><span class="tag blue">[RECOVERY]</span><h3><Icon name="activity" size={20} /> Tidur 5 Jam = Otot Bocor?</h3>
       <p>Review 40 studi: kurang tidur menurunkan kekuatan submaksimal, reaksi, dan daya tahan; sleep extension memperbaiki performa. Target 7–9 jam.</p>
       <div class="foot"><span>6 mnt baca • 2019</span><span><a class="src" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6988893/" target="_blank" rel="noopener">Vitale et al. 2019, PMC ↗</a></span></div></div>
     <div class="card"><span class="tag blue">[RECOVERY]</span><h3><Icon name="activity" size={20} /> Foam Rolling: Sains atau Plasebo?</h3>
-      <p>Meta-analisis: foam rolling meningkatkan ROM &amp; mengurangi DOMS jangka pendek; efek performa akut kecil. Alat recovery — bukan pemanasan utama.</p>
+      <p>Meta-analisis: foam rolling meningkatkan ROM &amp; mengurangi DOMS jangka pendek; efek performa akut kecil. Alat recovery, bukan pemanasan utama.</p>
       <div class="foot"><span>4 mnt baca • 2019</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/31024339/" target="_blank" rel="noopener">Wiewelhove et al. 2019 ↗</a></span></div></div>
     <div class="card"><span class="tag blue">[RECOVERY]</span><h3><Icon name="activity" size={20} /> Cara Terbaik Atasi Pegal (DOMS)?</h3>
       <p>Review: massage, kompresi, dan active recovery paling konsisten menurunkan marker nyeri; stretching statis lemah buktinya. Pilih yang ada bukti.</p>
@@ -428,7 +567,7 @@ import Icon from '../components/Icon.astro';
       <p>Kohort besar 2026: kombinasi muscle-strengthening + aerobik menurunkan mortalitas lebih dari salah satu saja. Inilah alasan latihan beban + cardio.</p>
       <div class="foot"><span>5 mnt baca • 2026</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/39913676/" target="_blank" rel="noopener">Eur J Prev Cardiol 2026 ↗</a></span></div></div>
     <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[KONDISI]</span><h3><Icon name="trending-up" size={20} /> Weekend Warrior Sama Sehatnya?</h3>
-      <p>Studi: 150 menit/minggu menumpuk di weekend ≈ tersebar untuk mortalitas. Sibuk bukan alasan — kumpulkan di Sabtu-Minggu.</p>
+      <p>Studi: 150 menit/minggu menumpuk di weekend ≈ tersebar untuk mortalitas. Sibuk bukan alasan, kumpulkan di Sabtu-Minggu.</p>
       <div class="foot"><span>4 mnt baca • 2025</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/41469694/" target="_blank" rel="noopener">Lipids Health Dis 2025 ↗</a></span></div></div>
     <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[KONDISI]</span><h3><Icon name="trending-up" size={20} /> Duduk 8 Jam Sehari?</h3>
       <p>Device-measured 2024: sedentary tinggi berkaitan dengan risiko penyakit; sela 5 menit gerak tiap jam memutus rantai. Timer adalah temanmu.</p>
@@ -457,13 +596,85 @@ import Icon from '../components/Icon.astro';
       <p>Teori goal-setting Locke &amp; Latham: target spesifik + menantang → performa lebih tinggi dari "lakukan yang terbaik". Tulis target PR-mu.</p>
       <div class="foot"><span>4 mnt baca • 2002</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/12237980/" target="_blank" rel="noopener">Locke &amp; Latham 2002 ↗</a></span></div></div>
   </div>
+  <div class="mini-head"><span class="eyebrow">[KHUSUS // 16 ARTIKEL]</span>
+    <h3>Satu Lab untuk Semua Umur.</h3>
+    <p>Wanita, anak &amp; remaja, lansia: semua butuh latihan beban, dengan penyesuaian. Baca rambu amannya dulu.</p>
+  </div>
+  <div class="two">
+    <div class="do ok"><b><Icon name="check" size={14} /> AMAN BILA</b><ul><li>Mulai ringan, teknik dulu (lihat video di atas)</li><li>Wanita hamil: ikut pedoman ACOG + izin dokter</li><li>Anak &lt;15 tahun: wajib didampingi pelatih/orang tua</li><li>Lansia: mulai dari mesin, kursi, atau resistance band</li></ul></div>
+    <div class="do no"><b><Icon name="x" size={14} /> KONSULTASI DOKTER DULU</b><ul><li>Hamil dengan komplikasi / postpartum dini</li><li>Anak dengan kondisi medis khusus</li><li>Lansia: jantung, hipertensi tak terkontrol, osteoporosis berat</li><li>Nyeri dada / pusing saat latihan → stop</li></ul></div>
+  </div>
+  <div class="mini-head"><span class="eyebrow">[WANITA // 5 ARTIKEL]</span>
+    <h3>Kuat, Bukan Kekar.</h3>
+  </div>
+  <div class="grid3">
+    <div class="card"><span class="tag amber">[WANITA]</span><h3><Icon name="dumbbell" size={20} /> Beban untuk Perempuan Sama Efektifnya.</h3>
+      <p>Review 2025: rekomendasi latihan pria–wanita pada dasarnya sama &amp; bergantung goal; penghalang terbesar = persepsi waktu/usaha. Jangan takut "kekar". Estrogen ≠ hipertrofi instan.</p>
+      <div class="foot"><span>5 mnt baca • 2025</span><span><a class="src" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12421175/" target="_blank" rel="noopener">Kraemer et al. 2025 ↗</a></span></div></div>
+    <div class="card"><span class="tag amber">[WANITA]</span><h3><Icon name="shield-check" size={20} /> Hamil Tetap Boleh Latihan?</h3>
+      <p>ACOG: kehamilan normal → 150 menit/minggu aerobik moderat + boleh lanjut beban ringan-sedang dengan penyesuaian; stop bila ada perdarahan/kontraksi. Konsultasi dokter dulu.</p>
+      <div class="foot"><span>4 mnt baca • ACOG</span><span><a class="src" href="https://www.acog.org/" target="_blank" rel="noopener">ACOG Committee Opinion ↗</a></span></div></div>
+    <div class="card"><span class="tag amber">[WANITA]</span><h3><Icon name="shield-check" size={20} /> Tulang Keropos Dicegah Beban?</h3>
+      <p>Cochrane: latihan beban + aerobik memperlambat pengeroposan tulang pascamenopause; tambah kalsium + vitamin D. Squat &amp; deadlift ringan = tabungan tulang.</p>
+      <div class="foot"><span>5 mnt baca • Cochrane</span><span><a class="src" href="https://doi.org/10.1002/14651858.CD000333.pub2" target="_blank" rel="noopener">Howe et al. Cochrane ↗</a></span></div></div>
+    <div class="card"><span class="tag amber">[WANITA]</span><h3><Icon name="activity" size={20} /> Siklus Haid &amp; Performa?</h3>
+      <p>Review Sports Med 2020: efek fase siklus ke performa ada tapi kecil &amp; sangat individual; catat siklusmu. Turunkan RPE bila perlu, jangan skip total.</p>
+      <div class="foot"><span>4 mnt baca • 2020</span><span><a class="src" href="https://doi.org/10.1007/s40279-020-01319-3" target="_blank" rel="noopener">McNulty et al. 2020 ↗</a></span></div></div>
+    <div class="card"><span class="tag amber">[WANITA]</span><h3><Icon name="clipboard-check" size={20} /> Perempuan 50+: Protein 2x?</h3>
+      <p>PROT-AGE: perempuan 50+ butuh 1,0–1,2g/kg + beban lawan sarcopenia. Ajak ibumu latihan, belum terlambat.</p>
+      <div class="foot"><span>4 mnt baca • 2013</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/23867520/" target="_blank" rel="noopener">Bauer et al. 2013 ↗</a></span></div></div>
+  </div>
+  <div class="mini-head"><span class="eyebrow">[ANAK &amp; REMAJA // 5 ARTIKEL]</span>
+    <h3>Main Dulu, Prestasi Menyusul.</h3>
+  </div>
+  <div class="grid3">
+    <div class="card"><span class="tag blue">[ANAK]</span><h3><Icon name="users" size={20} /> Umur Berapa Boleh Angkat?</h3>
+      <p>AAP &amp; NSCA sepakat: aman sejak 5–7 tahun asal sesuai umur, didampingi, teknik dulu–beban kemudian. Tidak menghambat tinggi badan.</p>
+      <div class="foot"><span>5 mnt baca • 2020</span><span><a class="src" href="https://doi.org/10.1542/peds.2020-1011" target="_blank" rel="noopener">AAP 2020 ↗</a> <a class="src" href="https://pubmed.ncbi.nlm.nih.gov/19620931/" target="_blank" rel="noopener">Faigenbaum 2009 ↗</a></span></div></div>
+    <div class="card"><span class="tag blue">[ANAK]</span><h3><Icon name="activity" size={20} /> 60 Menit Main Aktif Sehari.</h3>
+      <p>WHO: anak 5–17 tahun butuh ≥60 menit aktivitas moderat–berat/hari + penguatan otot 3×/minggu. Main bola, sepedaan, bodyweight. Yang penting fun.</p>
+      <div class="foot"><span>4 mnt baca • WHO</span><span><a class="src" href="https://www.who.int/news-room/fact-sheets/detail/physical-activity" target="_blank" rel="noopener">WHO Physical Activity ↗</a></span></div></div>
+    <div class="card"><span class="tag blue">[ANAK]</span><h3><Icon name="users" size={20} /> Remaja: Teknik Dulu, Ego Nanti.</h3>
+      <p>Supervisi menaikkan hasil &amp; menekan cedera. Berlaku juga untuk remaja. Rasio aman 1 coach : ≤10 anak; mulai bodyweight: squat, push-up incline, hang.</p>
+      <div class="foot"><span>4 mnt baca • 2022</span><span><a class="src" href="https://journal.iusca.org/index.php/Journal/article/view/101" target="_blank" rel="noopener">Fisher et al. 2022 ↗</a></span></div></div>
+    <div class="card"><span class="tag blue">[ANAK]</span><h3><Icon name="trending-up" size={20} /> Lawan Obesitas Anak dengan Gerak.</h3>
+      <p>Solusinya lingkungan aktif + latihan kekuatan yang menyenangkan, bukan diet ekstrem. Libatkan keluarga. Anak meniru, bukan mendengar.</p>
+      <div class="foot"><span>4 mnt baca • WHO</span><span><a class="src" href="https://www.who.int/news-room/fact-sheets/detail/obesity-and-overweight" target="_blank" rel="noopener">WHO Obesity ↗</a></span></div></div>
+    <div class="card"><span class="tag blue">[ANAK]</span><h3><Icon name="zap" size={20} /> Ganti 1 Jam Layar dengan Main.</h3>
+      <p>Sedentary tinggi berkaitan dengan risiko penyakit; sela 5 menit gerak tiap jam memutus rantai. Aturan praktis: tiap 1 jam gadget → 10 menit gerak.</p>
+      <div class="foot"><span>4 mnt baca • 2024</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/38961452/" target="_blank" rel="noopener">IJBNPA 2024 ↗</a></span></div></div>
+  </div>
+  <div class="mini-head"><span class="eyebrow">[LANSIA // 6 ARTIKEL]</span>
+    <h3>Semakin Tua, Justru Semakin Butuh Otot.</h3>
+  </div>
+  <div class="grid3">
+    <div class="card"><span class="tag amber">[LANSIA]</span><h3><Icon name="shield-check" size={20} /> Otot Menyusut Setelah 40? Lawan.</h3>
+      <p>NSCA 2019: program beban + instruksi teknik yang benar aman untuk lansia sehat; mulai 1 set mesin/band → progres ke 2–3 set &amp; gerakan fungsional.</p>
+      <div class="foot"><span>5 mnt baca • 2019</span><span><a class="src" href="http://dxpprod.nsca.com/contentassets/2a4112fb355a4a48853bbafbe070fb8e/resistance_training_for_older_adults__position.1.pdf" target="_blank" rel="noopener">NSCA 2019 ↗</a></span></div></div>
+    <div class="card"><span class="tag amber">[LANSIA]</span><h3><Icon name="calendar-check" size={20} /> Resep Gerak 65+: Aerobik + Beban + Balance.</h3>
+      <p>ACSM: 30 mnt/hari aerobik moderat (total 150/minggu) + beban 8–10 gerakan + fleksibilitas &amp; balance 2–3×/minggu cegah jatuh.</p>
+      <div class="foot"><span>5 mnt baca • ACSM</span><span><a class="src" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4969034/" target="_blank" rel="noopener">ACSM Older Adults ↗</a></span></div></div>
+    <div class="card"><span class="tag amber">[LANSIA]</span><h3><Icon name="activity" size={20} /> Jatuh Bisa Dicegah dengan Latihan.</h3>
+      <p>Cochrane: latihan balance + fungsional menurunkan risiko jatuh lansia; gabungkan dengan kaki kuat (sit-to-stand, step-up).</p>
+      <div class="foot"><span>5 mnt baca • Cochrane</span><span><a class="src" href="https://doi.org/10.1002/14651858.CD012424.pub2" target="_blank" rel="noopener">Sherrington Cochrane ↗</a></span></div></div>
+    <div class="card"><span class="tag amber">[LANSIA]</span><h3><Icon name="sparkles" size={20} /> Otak Tajam karena Gerak.</h3>
+      <p>Komisi Lancet 2020: aktivitas fisik termasuk faktor protektif demensia; kombinasi aerobik + beban terbaik. Jalan + beban 2×/minggu.</p>
+      <div class="foot"><span>5 mnt baca • 2020</span><span><a class="src" href="https://doi.org/10.1016/S0140-6736(20)30367-6" target="_blank" rel="noopener">Livingston et al. 2020 ↗</a></span></div></div>
+    <div class="card"><span class="tag amber">[LANSIA]</span><h3><Icon name="trending-up" size={20} /> Weekend Warrior 60+ Tetap Manfaat.</h3>
+      <p>150 menit/minggu menumpuk di weekend ≈ tersebar untuk mortalitas. Kabar baik untuk oma-opa sibuk jaga cucu.</p>
+      <div class="foot"><span>4 mnt baca • 2025</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/41469694/" target="_blank" rel="noopener">Lipids Health Dis 2025 ↗</a></span></div></div>
+    <div class="card"><span class="tag amber">[LANSIA]</span><h3><Icon name="trending-up" size={20} /> Jalan 7.000 Langkah + Beban 2×.</h3>
+      <p>Manfaat langkah menanjak sampai ~8–10 ribu lalu plateau; 7 ribu sudah dapat mayoritas. Tambah beban biar naik tangga tidak ngos-ngosan.</p>
+      <div class="foot"><span>4 mnt baca • 2023</span><span><a class="src" href="https://pubmed.ncbi.nlm.nih.gov/36537288/" target="_blank" rel="noopener">Paluch et al. 2023 ↗</a></span></div></div>
+  </div>
+  <div class="secnav"><a class="btn btn-ghost btn-sm" href="#metode">← Metode</a><a class="btn btn-ghost btn-sm" href="#download">Download →</a></div>
 </div></section>
 
 <!-- DOWNLOADABLE -->
 <section id="download"><div class="wrap">
   <div class="center"><span class="eyebrow">[DOWNLOADABLE ASSETS]</span>
     <h2 class="sec-title">Template Gratis.</h2>
-    <p class="sec-sub">PDF &amp; Google Sheets siap pakai. Link unduhan aktif menyusul — gabung grup untuk akses pertama.</p>
+    <p class="sec-sub">PDF &amp; Google Sheets siap pakai. Link unduhan aktif menyusul. Gabung grup untuk akses pertama.</p>
   </div>
   <div class="mini-grid">
     <div class="mini"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[CHECKLIST PDF]</span>
@@ -479,6 +690,7 @@ import Icon from '../components/Icon.astro';
       <p>Hitung TDEE, target protein, dan contoh sehari makan Indonesia.</p>
       <a class="btn btn-lime" href="#">Download (Segera)</a></div>
   </div>
+  <div class="secnav"><a class="btn btn-ghost btn-sm" href="#blog">← Artikel</a><a class="btn btn-ghost btn-sm" href="/tools">Tools →</a></div>
 </div></section>
 
 </Layout>

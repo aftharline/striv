@@ -11,18 +11,20 @@ const WA_INSIDENTIL = wa("Halo STRIV, saya mau booking 1 sesi Offline Insidentil
 const WA_SINGLE = wa("Halo STRIV, saya mau ambil 1 sesi Online Tunggal (Rp50rb). Bisa info caranya?");
 const FORM_URL = "#pricing"; // ponytail: ganti dengan URL Google Form Client Intake saat sudah ada
 ---
-<Layout active="coaching" title="STRIV Coaching — Offline, Online & Hybrid." description="Upgrade dari anggota komunitas jadi klien: Offline Coaching, Hybrid Starter, Online Coaching. Transparan, tanpa suplemen wajib.">
+<Layout active="coaching" title="STRIV Coaching: Offline, Online & Hybrid." description="Upgrade dari anggota komunitas jadi klien: Offline Coaching, Hybrid Starter, Online Coaching. Transparan, tanpa suplemen wajib.">
 
-<section class="hero"><div class="wrap">
+<section class="hero"><div class="hero-slides slides-1" aria-hidden="true"><img src="/hero-coaching-1.webp" alt="" fetchpriority="high" /></div><div class="wrap">
   <img class="hero-mark" src="/symbol_logo.svg" alt="STRIV" width="64" height="64" fetchpriority="high" />
   <span class="eyebrow">[COACHING &amp; SERVICES] | 1-ON-1 &amp; HYBRID</span>
   <h1>Train Better.<br /><em>Progress Together.</em></h1>
-  <p>Berhenti berlatih secara acak. Pendampingan 1-on-1 terarah, aman, dan konsisten — offline, online, atau hybrid.</p>
+  <p>Berhenti berlatih secara acak. Pendampingan 1-on-1 terarah, aman, dan konsisten: offline, online, atau hybrid.</p>
   <div class="cta-row">
     <a class="btn btn-lime" href="#pricing">Mulai Program Kamu <Icon name="arrow-right" size={16} /></a>
     <a class="btn btn-ghost" href="#metode"><Icon name="clipboard-check" size={16} /> Pelajari Metode Kami</a>
   </div>
 </div></section>
+
+<nav class="subnav" aria-label="Navigasi halaman Coaching"><div class="subnav-in"><a href="#top">Atas</a><a href="#metode">Metode</a><a href="#pricing">Harga</a><a href="#transparansi">Transparansi</a><a href="#faq">FAQ</a><a href="#gabung">Gabung</a></div></nav>
 
 <!-- METHOD -->
 <section id="metode" style="padding-top:0"><div class="wrap">
@@ -48,6 +50,7 @@ const FORM_URL = "#pricing"; // ponytail: ganti dengan URL Google Form Client In
     </svg>
     <div class="legend"><span>━ STRIV (naik)</span><span>- - Latihan acak (plateau)</span><span class="pill">+24.8% NET ADAPTATION</span></div>
   </div>
+  <div class="secnav"><a class="btn btn-ghost btn-sm" href="#top">← Atas</a><a class="btn btn-ghost btn-sm" href="#pricing">Harga →</a></div>
 </div></section>
 
 <!-- PRICING -->
@@ -95,6 +98,7 @@ const FORM_URL = "#pricing"; // ponytail: ganti dengan URL Google Form Client In
       <ul><li><Icon name="check" size={15} /><span><b>1x Video Form Breakdown</b> async.</span></li><li><Icon name="check" size={15} /><span><b>1x Penyesuaian Program</b> tertulis.</span></li><li><Icon name="check" size={15} /><span>Tanya jawab WA 1x24 jam.</span></li></ul>
       <a class="btn btn-ghost" href={WA_SINGLE} target="_blank" rel="noopener">Ambil 1 Sesi</a></div>
   </div>
+  <div class="secnav"><a class="btn btn-ghost btn-sm" href="#metode">← Metode</a><a class="btn btn-ghost btn-sm" href="#transparansi">Transparansi →</a></div>
 </div></section>
 
 <!-- TRANSPARENCY -->
@@ -109,6 +113,7 @@ const FORM_URL = "#pricing"; // ponytail: ganti dengan URL Google Form Client In
       <div class="do no"><b><Icon name="x" size={13} /> TIDAK AKAN KAMI LAKUKAN</b><ul><li>• TIDAK janji fat loss instan 10kg/2 minggu.</li><li>• TIDAK paksa beli suplemen mahal.</li><li>• TIDAK biarkan latihan sampai cedera.</li></ul></div>
     </div>
   </div>
+  <div class="secnav"><a class="btn btn-ghost btn-sm" href="#pricing">← Harga</a><a class="btn btn-ghost btn-sm" href="#faq">FAQ →</a></div>
 </div></section>
 
 <!-- FAQ -->
@@ -120,10 +125,11 @@ const FORM_URL = "#pricing"; // ponytail: ganti dengan URL Google Form Client In
     <details><summary>Jadwal kerja dinamis, bisa?<Icon name="chevron-down" size={18} /></summary><p>Bisa. Paket Hybrid fleksibel: latihan mandiri via panduan WA saat sibuk, tatap muka saat longgar. Reschedule H-1 tanpa hangus.</p></details>
     <details><summary>Harus beli suplemen (whey/creatine)?<Icon name="chevron-down" size={18} /></summary><p>Tidak wajib. Fondasi = whole foods (ayam, telur, tempe, tahu, nasi, sayur). Suplemen opsional jika protein harian kurang.</p></details>
   </div>
+  <div class="secnav"><a class="btn btn-ghost btn-sm" href="#transparansi">← Transparansi</a><a class="btn btn-ghost btn-sm" href="#gabung">Gabung →</a></div>
 </div></section>
 
 <!-- FINAL CTA -->
-<section><div class="wrap">
+<section id="gabung"><div class="wrap">
   <div class="final-box">
     <img src="/symbol_logo.svg" alt="STRIV" width="44" height="44" loading="lazy" style="margin:0 auto 1rem;display:block" />
     <span class="eyebrow">[FOUNDING COHORT // FINAL CALL]</span>
@@ -135,6 +141,7 @@ const FORM_URL = "#pricing"; // ponytail: ganti dengan URL Google Form Client In
     </div>
     <div class="micro">[FREE INTAKE AUDIT • RESPONSE &lt; 2 HOURS]</div>
   </div>
+  <div class="secnav"><a class="btn btn-ghost btn-sm" href="#faq">← FAQ</a><a class="btn btn-ghost btn-sm" href="/tools">Tools →</a></div>
 </div></section>
 
 </Layout>

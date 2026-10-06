@@ -5,14 +5,14 @@ const wa = (text: string) => `https://wa.me/6285707109853?text=${encodeURICompon
 const WA_JOIN = wa("Halo STRIV, saya mau join Community. Bagaimana caranya?");
 const WA_GENERAL = wa("Halo STRIV, saya siap memulai program coaching. Bisa bantu analisis target saya?");
 ---
-<Layout active="home" title="STRIV: Born in Surabaya, Built to Move Forward." description="STRIV — komunitas edu-social fitness Surabaya. Zero ego zone, science-based approach, stronger together. Join gratis.">
+<Layout active="home" title="STRIV: Born in Surabaya, Built to Move Forward." description="STRIV: komunitas edu-social fitness Surabaya. Zero ego zone, science-based approach, stronger together. Join gratis.">
 
 <!-- HERO -->
-<section class="hero"><div class="wrap">
+<section class="hero"><div class="hero-slides slides-3" aria-hidden="true"><img src="/hero-home-1.webp" alt="" fetchpriority="high" /><img src="/hero-home-2.webp" alt="" loading="lazy" /><img src="/hero-home-3.webp" alt="" loading="lazy" /></div><div class="wrap">
   <img class="hero-mark" src="/symbol_logo.svg" alt="STRIV" width="64" height="64" fetchpriority="high" />
   <span class="eyebrow">[EDU-SOCIAL FITNESS] | SURABAYA • GRATIS</span>
   <h1>Born in Surabaya.<br /><em>Built to Move Forward.</em></h1>
-  <p>Komunitas fitness yang inklusif dan energik. Belajar latihan beban yang benar, bareng-bareng, tanpa ego — gratis.</p>
+  <p>Komunitas fitness yang inklusif dan energik. Belajar latihan beban yang benar, bareng-bareng, tanpa ego, gratis.</p>
   <div class="cta-row">
     <a class="btn btn-lime" href="/community">Join the Community (Free) <Icon name="arrow-right" size={16} /></a>
     <a class="btn btn-ghost" href="/coaching"><Icon name="dumbbell" size={16} /> Upgrade ke Coaching</a>
@@ -38,20 +38,23 @@ const WA_GENERAL = wa("Halo STRIV, saya siap memulai program coaching. Bisa bant
   </div>
 </div></section>
 
+<nav class="subnav" aria-label="Navigasi halaman Beranda"><div class="subnav-in"><a href="#top">Atas</a><a href="#manifesto">Manifesto</a><a href="#nilai">Nilai</a><a href="#testimoni">Testimoni</a><a href="#cerita">Cerita</a><a href="#event">Event</a><a href="#gabung">Gabung</a></div></nav>
+
 <!-- MANIFESTO -->
 <section id="manifesto"><div class="wrap">
   <div class="center"><span class="eyebrow">[THE S-T-R-I-V MANIFESTO]</span>
     <h2 class="sec-title">Lima Pilar. Satu Filosofi.</h2>
-    <p class="sec-sub">Setiap huruf STRIV adalah prinsip latihan yang kami pegang — dari sesi pertama sampai mandiri seumur hidup.</p>
+    <p class="sec-sub">Setiap huruf STRIV adalah prinsip latihan yang kami pegang, dari sesi pertama sampai mandiri seumur hidup.</p>
   </div>
   <div class="steps">
-    <div class="step"><div class="row"><span class="n">S</span><span>[STRENGTH]</span></div><h4><Icon name="dumbbell" size={18} /> Strength</h4><p>Kekuatan adalah fondasi. Progressive overload terukur, bukan angkat ego — naikkan beban karena tubuh siap, bukan karena gengsi.</p><div class="out"><Icon name="arrow-right" size={13} /> Fondasi semua progres</div></div>
+    <div class="step"><div class="row"><span class="n">S</span><span>[STRENGTH]</span></div><h4><Icon name="dumbbell" size={18} /> Strength</h4><p>Kekuatan adalah fondasi. Progressive overload terukur, bukan angkat ego. Naikkan beban karena tubuh siap, bukan karena gengsi.</p><div class="out"><Icon name="arrow-right" size={13} /> Fondasi semua progres</div></div>
     <div class="step"><div class="row"><span class="n">T</span><span>[TECHNIQUE]</span></div><h4><Icon name="clipboard-check" size={18} /> Technique</h4><p>Form over ego. Bracing, tempo, dan jalur bar yang benar membuat setiap repetisi aman dan efektif.</p><div class="out"><Icon name="arrow-right" size={13} /> Teknik nomor satu</div></div>
     <div class="step"><div class="row"><span class="n">R</span><span>[RESISTANCE]</span></div><h4><Icon name="shield-check" size={18} /> Resistance</h4><p>Tahan godaan jalan pintas: program lompat-lompat, suplemen overprice, janji sixpack 30 hari. Konsisten pada yang terbukti.</p><div class="out"><Icon name="arrow-right" size={13} /> Tolak bro-science</div></div>
-    <div class="step"><div class="row"><span class="n">I</span><span>[INTENSITY]</span></div><h4><Icon name="zap" size={18} /> Intensity</h4><p>Latihan dengan intensitas yang tepat — RPE terpantau, deload terjadwal. Keras saat waktunya keras, bijak saat waktunya pulih.</p><div class="out"><Icon name="arrow-right" size={13} /> Keras + bijak</div></div>
+    <div class="step"><div class="row"><span class="n">I</span><span>[INTENSITY]</span></div><h4><Icon name="zap" size={18} /> Intensity</h4><p>Latihan dengan intensitas yang tepat: RPE terpantau, deload terjadwal. Keras saat waktunya keras, bijak saat waktunya pulih.</p><div class="out"><Icon name="arrow-right" size={13} /> Keras + bijak</div></div>
     <div class="step"><div class="row"><span class="n">V</span><span>[VITALITY]</span></div><h4><Icon name="activity" size={18} /> Vitality</h4><p>Tujuan akhir bukan sekadar otot: energi, tidur nyenyak, dan tubuh yang fungsional untuk hidup sehari-hari.</p><div class="out"><Icon name="arrow-right" size={13} /> Sehat seumur hidup</div></div>
     <div class="step"><div class="row"><span class="n">+</span><span>[TOGETHER]</span></div><h4><Icon name="users" size={18} /> Stronger Together</h4><p>Progres tercepat lahir dari komunitas. Saling koreksi form, rayakan PR, dan jangan biarkan ada yang berhenti di bulan keenam.</p><div class="out"><Icon name="arrow-right" size={13} /> <a class="src" href="/community">Join gratis →</a></div></div>
   </div>
+  <div class="secnav"><a class="btn btn-ghost btn-sm" href="#top">← Atas</a><a class="btn btn-ghost btn-sm" href="#nilai">Nilai →</a></div>
 </div></section>
 
 <!-- VALUE PROP -->
@@ -62,22 +65,23 @@ const WA_GENERAL = wa("Halo STRIV, saya siap memulai program coaching. Bisa bant
   </div>
   <div class="grid3">
     <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[01] ZERO EGO ZONE</span><h3><Icon name="shield-check" size={20} /> Tanpa Hakimi, Tanpa Pamer</h3>
-      <p>Pemula total dilatih dari nol tanpa dihakimi. Tidak ada yang pamer beban — yang dirayakan adalah teknik yang benar dan PR yang jujur.</p>
+      <p>Pemula total dilatih dari nol tanpa dihakimi. Tidak ada yang pamer beban. Yang dirayakan adalah teknik yang benar dan PR yang jujur.</p>
       <div class="foot"><span>Aturan #1 komunitas</span><span>[V-01]</span></div></div>
     <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[02] SCIENCE-BASED</span><h3><Icon name="clipboard-check" size={20} /> Setiap Saran Ada Rujukannya</h3>
-      <p>Program, cue teknik, dan tips nutrisi merujuk riset — bukan kata influencer. Yang belum terbukti kami labeli jujur sebagai opini.</p>
+      <p>Program, cue teknik, dan tips nutrisi merujuk riset, bukan kata influencer. Yang belum terbukti kami labeli jujur sebagai opini.</p>
       <div class="foot"><span>Lihat buktinya</span><span><a class="src" href="/lab">STRIV Lab →</a></span></div></div>
     <div class="card"><span class="tag" style="color:var(--lime);border-color:rgba(183,240,0,.35)">[03] STRONGER TOGETHER</span><h3><Icon name="users" size={20} /> Accountability Komunitas</h3>
-      <p>Grup aktif, event bareng, dan member spotlight bulanan. Hampir setengah member gym berhenti dalam 6 bulan — di sini kamu punya alasan untuk tetap datang.</p>
+      <p>Grup aktif, event bareng, dan member spotlight bulanan. Hampir setengah member gym berhenti dalam 6 bulan. Di sini kamu punya alasan untuk tetap datang.</p>
       <div class="foot"><span>Gratis selamanya</span><span><a class="src" href="/community">Join →</a></span></div></div>
   </div>
+  <div class="secnav"><a class="btn btn-ghost btn-sm" href="#manifesto">← Manifesto</a><a class="btn btn-ghost btn-sm" href="#testimoni">Testimoni →</a></div>
 </div></section>
 
 <!-- TESTIMONI -->
 <section id="testimoni"><div class="wrap">
   <div class="center"><span class="eyebrow">[SOCIAL PROOF]</span>
     <h2 class="sec-title">Progres Nyata Anggota.</h2>
-    <p class="sec-sub">Bukan sekadar before-after badan — tapi metrik performa yang terukur.</p>
+    <p class="sec-sub">Bukan sekadar before-after badan, tapi metrik performa yang terukur.</p>
   </div>
   <div class="grid3">
     <div class="card"><div class="quote"><small>[MEMBER #014 • 4 BULAN]</small>"Dari tidak bisa squat jadi kuat squat 60kg tanpa sakit pinggang."</div>
@@ -90,13 +94,14 @@ const WA_GENERAL = wa("Halo STRIV, saya siap memulai program coaching. Bisa bant
       <p>Andi datang untuk fat loss. Dapat bonus: kekuatan relatif naik, tidur membaik, tidak lagi begadang.</p>
       <div class="foot"><span>0 → 15 PUSH-UP</span><span>[PR-03]</span></div></div>
   </div>
+  <div class="secnav"><a class="btn btn-ghost btn-sm" href="#nilai">← Nilai</a><a class="btn btn-ghost btn-sm" href="#cerita">Cerita →</a></div>
 </div></section>
 
 <!-- CERITA SCROLLYTELLING -->
 <section id="cerita" style="background:#0a0b0c;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap">
   <div class="center"><span class="eyebrow">[KENAPA STRIV ADA]</span>
     <h2 class="sec-title">Scroll. Pahami. Putuskan.</h2>
-    <p class="sec-sub">Tiga langkah yang menjelaskan kenapa komunitas ini ada — dan ke mana kamu bisa pergi.</p>
+    <p class="sec-sub">Tiga langkah yang menjelaskan kenapa komunitas ini ada, dan ke mana kamu bisa pergi.</p>
   </div>
   <div class="story">
     <figure class="story-visual" data-active="0" style="margin:0">
@@ -106,11 +111,12 @@ const WA_GENERAL = wa("Halo STRIV, saya siap memulai program coaching. Bisa bant
       <div class="sdots" aria-hidden="true"><span class="sdot" data-d="0"></span><span class="sdot" data-d="1"></span><span class="sdot" data-d="2"></span></div>
     </figure>
     <div class="story-steps">
-      <article class="sstep" data-s="0"><span class="stag">[01 MASALAH]</span><h3>Latihan acak bikin orang menyerah.</h3><p>Hampir separuh member baru berhenti dalam 6 bulan pertama — bukan karena malas, tapi karena minim arahan dan tanpa sistem.</p><a class="btn btn-ghost btn-sm" href="/lab">Lihat Datanya <Icon name="arrow-right" size={14} /></a></article>
-      <article class="sstep" data-s="1"><span class="stag">[02 METODE]</span><h3>Lima pilar, satu sistem.</h3><p>Strength, Technique, Resistance, Intensity, Vitality — struktur latihan yang terarah, aman, dan konsisten, berbasis riset.</p><a class="btn btn-ghost btn-sm" href="/coaching">Pelajari Coaching <Icon name="arrow-right" size={14} /></a></article>
+      <article class="sstep" data-s="0"><span class="stag">[01 MASALAH]</span><h3>Latihan acak bikin orang menyerah.</h3><p>Hampir separuh member baru berhenti dalam 6 bulan pertama, bukan karena malas, tapi karena minim arahan dan tanpa sistem.</p><a class="btn btn-ghost btn-sm" href="/lab">Lihat Datanya <Icon name="arrow-right" size={14} /></a></article>
+      <article class="sstep" data-s="1"><span class="stag">[02 METODE]</span><h3>Lima pilar, satu sistem.</h3><p>Strength, Technique, Resistance, Intensity, Vitality: struktur latihan yang terarah, aman, dan konsisten, berbasis riset.</p><a class="btn btn-ghost btn-sm" href="/coaching">Pelajari Coaching <Icon name="arrow-right" size={14} /></a></article>
       <article class="sstep" data-s="2"><span class="stag">[03 KOMUNITAS]</span><h3>Mulai gratis, upgrade bila siap.</h3><p>Grup aktif, event bareng, edukasi terbuka. Mau pendampingan 1-on-1 penuh? Upgrade ke coaching kapan pun.</p><a class="btn btn-lime btn-sm" href="/community">Join Gratis <Icon name="arrow-right" size={14} /></a></article>
     </div>
   </div>
+  <div class="secnav"><a class="btn btn-ghost btn-sm" href="#testimoni">← Testimoni</a><a class="btn btn-ghost btn-sm" href="#event">Event →</a></div>
 </div></section>
 
 <!-- EVENT -->
@@ -119,17 +125,18 @@ const WA_GENERAL = wa("Halo STRIV, saya siap memulai program coaching. Bisa bant
     <img src="/symbol_logo.svg" alt="STRIV" width="44" height="44" loading="lazy" style="margin:0 auto 1rem;display:block" />
     <span class="eyebrow">[NEXT EVENT // COMING SOON]</span>
     <h2 class="sec-title">STRIV Lab: Squat &amp; Coffee.</h2>
-    <p>Bedah teknik squat bareng coach + ngopi santai sesama member. Terbuka untuk umum, kursi terbatas. Jadwal menyusul — join grup biar tidak ketinggalan.</p>
+    <p>Bedah teknik squat bareng coach + ngopi santai sesama member. Terbuka untuk umum, kursi terbatas. Jadwal menyusul, join grup biar tidak ketinggalan.</p>
     <div class="cta-row" style="margin-bottom:0">
       <a class="btn btn-lime" href="/community"><Icon name="users" size={16} /> Join Grup (Gratis)</a>
       <a class="btn btn-ghost" href="/lab"><Icon name="clipboard-check" size={16} /> Belajar Dulu di Lab</a>
     </div>
     <div class="micro">[SURABAYA • TERBUKA UNTUK UMUM]</div>
   </div>
+  <div class="secnav"><a class="btn btn-ghost btn-sm" href="#cerita">← Cerita</a><a class="btn btn-ghost btn-sm" href="#gabung">Gabung →</a></div>
 </div></section>
 
 <!-- FINAL CTA -->
-<section style="padding-top:0"><div class="wrap">
+<section id="gabung" style="padding-top:0"><div class="wrap">
   <div class="final-box">
     <img src="/symbol_logo.svg" alt="STRIV" width="44" height="44" loading="lazy" style="margin:0 auto 1rem;display:block" />
     <span class="eyebrow">[FREE // NO COMMITMENT]</span>
@@ -141,6 +148,7 @@ const WA_GENERAL = wa("Halo STRIV, saya siap memulai program coaching. Bisa bant
     </div>
     <div class="micro">[RESPONSE &lt; 2 HOURS • SENIN–SABTU]</div>
   </div>
+  <div class="secnav"><a class="btn btn-ghost btn-sm" href="#event">← Event</a><a class="btn btn-ghost btn-sm" href="/community">Komunitas →</a></div>
 </div></section>
 
 </Layout>
