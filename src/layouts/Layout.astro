@@ -338,12 +338,20 @@ details p{margin-top:.75rem;color:var(--muted);font-size:.88rem}
 .vempty .btn{margin-top:1rem}
 .mini[hidden]{display:none}
 .subnav{position:sticky;top:4.25rem;z-index:25;background:rgba(16,16,16,.94);backdrop-filter:blur(14px);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-@media(max-width:1023px){.subnav{position:static}}
+@media(max-width:1023px){.subnav{top:7.2rem}}
 .subnav-in{max-width:var(--max);margin:0 auto;padding:.55rem 1rem;display:flex;gap:.4rem;flex-wrap:wrap;justify-content:center}
 .subnav-in a{flex:none;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:.4rem .85rem;font-family:monospace;text-transform:uppercase;white-space:nowrap}
 .subnav-in a:hover{color:#fff;border-color:var(--line2)}
-main:has(> .subnav) section[id]{scroll-margin-top:8rem}
-main:has(> .subnav) .vtoolbar{top:7.3rem}
+main:has(> .subnav) section[id]{scroll-margin-top:calc(4.25rem + var(--subnav-h,3rem) + .75rem)}
+main:has(> .subnav) .vtoolbar{top:calc(4.25rem + var(--subnav-h,3rem))}
+#panes{scroll-margin-top:calc(4.25rem + var(--subnav-h,3rem) + .75rem)}
+#gabung{scroll-margin-top:calc(4.25rem + var(--subnav-h,3rem) + .75rem)}
+@media(max-width:1023px){
+  main:has(> .subnav) section[id]{scroll-margin-top:calc(7.2rem + var(--subnav-h,3rem) + .75rem)}
+  main:has(> .subnav) .vtoolbar{top:calc(7.2rem + var(--subnav-h,3rem))}
+  #panes{scroll-margin-top:calc(7.2rem + var(--subnav-h,3rem) + .75rem)}
+  #gabung{scroll-margin-top:calc(7.2rem + var(--subnav-h,3rem) + .75rem)}
+}
 .secnav{display:flex;justify-content:space-between;gap:.6rem;margin-top:2rem;flex-wrap:wrap}
 .secnav .btn{white-space:nowrap}
 @media(max-width:560px){.secnav .btn{flex:1 1 100%}}
@@ -534,6 +542,17 @@ footer{background:#08090b;border-top:1px solid var(--line);padding:3rem 0 2rem;c
       document.addEventListener('astro:after-swap',syncNav);
     })();
   }
+  // subnav: ukur tinggi aktual untuk offset sticky dinamis (wrap bervariasi per halaman)
+  (function(){
+    function fit(){
+      var n=document.querySelector('.subnav');
+      document.documentElement.style.setProperty('--subnav-h',(n?n.offsetHeight:0)+'px');
+    }
+    fit();
+    window.addEventListener('resize',fit);
+    window.addEventListener('load',fit);
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+  })();
 })();
 </script>
 </body>
